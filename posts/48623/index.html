@@ -96,7 +96,7 @@
     </div>
     
         <div id="toc" class="toc-article">
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AE%B5%E9%94%99%E8%AF%AF%E4%BA%A7%E7%94%9F%E5%8E%9F%E5%9B%A0"><span class="toc-text">段错误产生原因</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Core-dump%E6%96%87%E4%BB%B6"><span class="toc-text">Core dump文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E6%88%90core%E6%96%87%E4%BB%B6"><span class="toc-text">生成core文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8Bcore%E6%96%87%E4%BB%B6%E8%B7%AF%E5%BE%84"><span class="toc-text">查看core文件路径</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9core%E6%96%87%E4%BB%B6%E8%B7%AF%E5%BE%84"><span class="toc-text">修改core文件路径</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#core%E6%96%87%E4%BB%B6%E7%9A%84%E5%91%BD%E5%90%8D"><span class="toc-text">core文件的命名</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AE%B5%E9%94%99%E8%AF%AF%E4%BA%A7%E7%94%9F%E5%8E%9F%E5%9B%A0"><span class="toc-text">段错误产生原因</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%96%E8%AF%91"><span class="toc-text">编译</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Core-dump%E6%96%87%E4%BB%B6"><span class="toc-text">Core dump文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E6%88%90core%E6%96%87%E4%BB%B6"><span class="toc-text">生成core文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8Bcore%E6%96%87%E4%BB%B6%E8%B7%AF%E5%BE%84"><span class="toc-text">查看core文件路径</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9core%E6%96%87%E4%BB%B6%E8%B7%AF%E5%BE%84"><span class="toc-text">修改core文件路径</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#core%E6%96%87%E4%BB%B6%E7%9A%84%E5%91%BD%E5%90%8D"><span class="toc-text">core文件的命名</span></a></li></ol></li></ol>
 </div>
     
 </div>
@@ -145,7 +145,17 @@
 </span>
     </div>
     <div class="post-content no-indent">
-        <h2 id="段错误产生原因"><a href="#段错误产生原因" class="headerlink" title="段错误产生原因"></a>段错误产生原因</h2><h2 id="Core-dump文件"><a href="#Core-dump文件" class="headerlink" title="Core dump文件"></a>Core dump文件</h2><h3 id="生成core文件"><a href="#生成core文件" class="headerlink" title="生成core文件"></a>生成core文件</h3><ul>
+        <h2 id="段错误产生原因"><a href="#段错误产生原因" class="headerlink" title="段错误产生原因"></a>段错误产生原因</h2><ol>
+<li>访问不存在的地址</li>
+<li>访问系统保护的内存地址</li>
+<li>访问只读的内存地址</li>
+<li>栈溢出</li>
+</ol>
+<p>…</p>
+<h2 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">g++ -ggdb -o0</span><br><span class="line">    </span><br><span class="line">gcc <span class="keyword">new</span>.cpp -o test -g</span><br><span class="line"><span class="comment">//-g 增加调试信息</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Core-dump文件"><a href="#Core-dump文件" class="headerlink" title="Core dump文件"></a>Core dump文件</h2><p>linux下，程序异常结束，会生成一个core dump文件，这个文件包含了进程结束时的一些快照信息。<br>使用gdb等调试工具，可以调试这个core文件，分析崩溃原因。</p>
+<h3 id="生成core文件"><a href="#生成core文件" class="headerlink" title="生成core文件"></a>生成core文件</h3><ul>
 <li>查看允许的core文件大小</li>
 </ul>
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ulimit <span class="literal">-c</span></span><br><span class="line"><span class="number">0</span></span><br></pre></td></tr></table></figure>
@@ -225,7 +235,7 @@
     <p>
         Build By shixiaocaia | Powered By Hexo <a target="_blank" rel="noopener" href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
     <p>
-        <span id="copyright"></span> <span id="days"></span> , 嘟嘟了<span class="post-count">329</span>字 , 有了<span id="busuanzi_value_site_pv"></span>次驻足。
+        <span id="copyright"></span> <span id="days"></span> , 嘟嘟了<span class="post-count">437</span>字 , 有了<span id="busuanzi_value_site_pv"></span>次驻足。
     </p> 	
 </footer>
 
