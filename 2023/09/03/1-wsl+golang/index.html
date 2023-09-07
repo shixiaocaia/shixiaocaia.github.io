@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+
+    
+<script>!function(){var e=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,t=localStorage.getItem("use-color-scheme")||"auto";("dark"===t||e&&"light"!==t)&&document.documentElement.classList.toggle("dark",!0)}()</script>
+    
+
+<meta charset="utf-8" >
+
+<title>WSL中配置golang环境</title>
+<meta name="keywords" content="WSL中配置golang环境, shixiaocaia">
+<meta name="description" content="配置WSL
+参考文章：WSL安装
+
+切换root用户12sudo passwd rootsu
+
+限制Vmmem内存
+按下Windows + R键，输入%UserProfile%并运行进入用户文件夹
+
+新建文件.wslconfig，然后记事本">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta property="og:title" content="WSL中配置golang环境">
+<meta property="og:description" content="配置WSL
+参考文章：WSL安装
+
+切换root用户12sudo passwd rootsu
+
+限制Vmmem内存
+按下Windows + R键，输入%UserProfile%并运行进入用户文件夹
+
+新建文件.wslconfig，然后记事本">
+
+<link rel="shortcut icon" href="/images/favicon.ico">
+<link rel="stylesheet" href="/style/main.css">
+
+  <link rel="stylesheet" href="/style/simple-lightbox.min.css"><meta name="generator" content="Hexo 6.3.0"></head>
+  <body>
+    <div id="app" class="main">
+
+<div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="https://shixiaocaia.github.io">
+        <img class="avatar" src="/images/logo.png" alt="logo" width="32px" height="32px">
+      </a>
+      <a href="https://shixiaocaia.github.io">
+        <h1 class="site-title">shixiaocaia</h1>
+      </a>
+    </div>
+    <div class="right">
+        <i class="icon menu-switch icon-menu-outline" ></i>
+    </div>
+  </div>
+</div>
+
+<div class="menu-container" style="height: 0;opacity: 0;">
+<nav class="menu-list">
+  
+    
+      <a href="/" class="menu purple-link">
+        首页
+      </a>
+    
+  
+    
+      <a href="/archives" class="menu purple-link">
+        归档
+      </a>
+    
+  
+    
+      <a href="/about" class="menu purple-link">
+        关于
+      </a>
+    
+  
+</nav>
+</div>
+
+
+
+  <div class="content-container">
+    <div class="post-detail">
+      
+      <h2 class="post-title">WSL中配置golang环境</h2>
+      <div class="post-info post-detail-info">
+        <span><i class="icon icon-calendar-outline"></i> 2023-09-03</span>
+        
+          <span>
+          <i class="icon icon-pricetags-outline"></i>
+            
+              <a href="/tags/Linux/">
+              Linux
+                
+                  ,
+                
+              </a>
+            
+              <a href="/tags/golang/">
+              golang
+                
+              </a>
+            
+          </span>
+        
+      </div>
+      <div class="post-content-wrapper">
+        <div class="post-content">
+          <h2 id="配置WSL"><a href="#配置WSL" class="headerlink" title="配置WSL"></a>配置WSL</h2><blockquote>
+<p>参考文章：<a target="_blank" rel="noopener" href="https://deepinout.com/wsl-tutorials/wsl-install-and-quick-start.html">WSL安装</a></p>
+</blockquote>
+<h3 id="切换root用户"><a href="#切换root用户" class="headerlink" title="切换root用户"></a>切换root用户</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo passwd root</span><br><span class="line">su</span><br></pre></td></tr></table></figure>
+
+<h3 id="限制Vmmem内存"><a href="#限制Vmmem内存" class="headerlink" title="限制Vmmem内存"></a>限制Vmmem内存</h3><ol>
+<li><p>按下<code>Windows + R</code>键，输入<code>%UserProfile%</code>并运行进入用户文件夹</p>
+</li>
+<li><p>新建文件<code>.wslconfig</code>，然后记事本编辑</p>
+</li>
+<li><p>填入以下内容并保存, memory为系统内存上限，这里我限制最大2GB，可根据自身电脑配置设置</p>
+</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[wsl2]</span><br><span class="line">memory=4GB</span><br><span class="line">swap=8GB</span><br><span class="line">localhostForwarding=true</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>输入<code>wsl --shutdown</code>来关闭当前的子系统，重启wsl</li>
+</ol>
+<h3 id="使用docker"><a href="#使用docker" class="headerlink" title="使用docker"></a>使用docker</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">启动docker</span></span><br><span class="line">systemctl start docker</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看当前的容器</span></span><br><span class="line"></span><br><span class="line">docker ps -a</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">启动容器</span></span><br><span class="line">docker  start 容器名或者容器id</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">停止容器</span></span><br><span class="line">docker  stop 容器名或容器id</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">强制关闭容器</span></span><br><span class="line">docker container kill 容器名或容器id</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">或可简写为</span></span><br><span class="line">docker kill 容器名或容器id</span><br></pre></td></tr></table></figure>
+
+<h3 id="配置Git"><a href="#配置Git" class="headerlink" title="配置Git"></a>配置Git</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">apt-get install libcurl4-gnutls-dev libexpat1-dev gettext \</span></span><br><span class="line"><span class="language-bash">  libz-dev libssl-dev</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">apt-get install git</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">git --version</span></span><br><span class="line">git version 1.8.1.2</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">配置用户信息</span></span><br><span class="line">git config --global user.name &quot;runoob&quot;​</span><br><span class="line">git config --global user.email shixiaocaia@gmail.com​</span><br><span class="line">git config --list</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">配置SSH</span></span><br><span class="line">ssh-keygen -t rsa -C &quot;这里换上你的邮箱&quot;</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">不需要密码，直接三次回车</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">生成id_rsa和id_rsa.pub</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">添加公钥pub文件内容，到Settings -- SSH and GPG keys​</span></span><br><span class="line">cat ~/.ssh/id_rsa.pub</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">测试配置成功</span></span><br><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
+
+<h2 id="自动安装"><a href="#自动安装" class="headerlink" title="自动安装"></a>自动安装</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install golang-go</span><br><span class="line">apt remove golang-go</span><br></pre></td></tr></table></figure>
+
+<p>用这样的办法自动安装的golang并非最新版</p>
+<h2 id="手动安装"><a href="#手动安装" class="headerlink" title="手动安装"></a>手动安装</h2><ol>
+<li>查看<a target="_blank" rel="noopener" href="https://golang.google.cn/dl/">google发布的golang版本</a>，选择合适的版本安装。</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://studygolang.com/dl/golang/go1.15.2.linux-amd64.tar.gz</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>解压到<code>/usr/local</code></li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -C /usr/local -xzf go1.15.2.linux-amd64.tar.gz</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>设置环境变量</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/profile</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export GOPATH=/home/xiaocai/go</span><br><span class="line">export GOROOT=/usr/local/go</span><br><span class="line">export PATH=$PATH:$GOROOT/bin:$GOPATH/bin</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source /etc/profile</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>其他设置</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">配置代理</span></span><br><span class="line">go env  -w GOPROXY=https://goproxy.cn,https://goproxy.io,direct</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Go Moudle</span></span><br><span class="line">go env -w GO111MODULE=on</span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>查看环境是否安装成功</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">go env</span><br><span class="line">go version</span><br></pre></td></tr></table></figure>
+
+<h2 id="golang配置"><a href="#golang配置" class="headerlink" title="golang配置"></a>golang配置</h2><p><a class="simple-lightbox" href="/../images/2023931.webp"><img   src="/images/loading.svg" data-src="/../images/2023931.webp"  alt="img" lazyload></a></p>
+<ul>
+<li><p>添加语言运行时</p>
+</li>
+<li><p>使用<code>whereis go</code>，得到<code>go: /usr/local/go /usr/local/go/bin/go /mnt/d/Go/bin/go.exe</code></p>
+<ul>
+<li><p>第一个参数是go sdk文件夹</p>
+</li>
+<li><p>第二个参数<code>/usr/local/go/bin/go</code>对应Go可执行文件参数</p>
+</li>
+<li><p>第三个是Windows10里面的go环境映射到了wsl2</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><a class="simple-lightbox" href="/../images/2023932.webp"><img   src="/images/loading.svg" data-src="/../images/2023932.webp"  alt="img" lazyload></a></p>
+<ul>
+<li>运行&#x2F;调试配置更改</li>
+</ul>
+
+        </div>
+          
+        <div class="top-div">
+          <ol class="top-box"><li class="top-box-item top-box-level-2"><a class="top-box-link" href="#%E9%85%8D%E7%BD%AEWSL"><span class="top-box-text">配置WSL</span></a><ol class="top-box-child"><li class="top-box-item top-box-level-3"><a class="top-box-link" href="#%E5%88%87%E6%8D%A2root%E7%94%A8%E6%88%B7"><span class="top-box-text">切换root用户</span></a></li><li class="top-box-item top-box-level-3"><a class="top-box-link" href="#%E9%99%90%E5%88%B6Vmmem%E5%86%85%E5%AD%98"><span class="top-box-text">限制Vmmem内存</span></a></li><li class="top-box-item top-box-level-3"><a class="top-box-link" href="#%E4%BD%BF%E7%94%A8docker"><span class="top-box-text">使用docker</span></a></li><li class="top-box-item top-box-level-3"><a class="top-box-link" href="#%E9%85%8D%E7%BD%AEGit"><span class="top-box-text">配置Git</span></a></li></ol></li><li class="top-box-item top-box-level-2"><a class="top-box-link" href="#%E8%87%AA%E5%8A%A8%E5%AE%89%E8%A3%85"><span class="top-box-text">自动安装</span></a></li><li class="top-box-item top-box-level-2"><a class="top-box-link" href="#%E6%89%8B%E5%8A%A8%E5%AE%89%E8%A3%85"><span class="top-box-text">手动安装</span></a></li><li class="top-box-item top-box-level-2"><a class="top-box-link" href="#golang%E9%85%8D%E7%BD%AE"><span class="top-box-text">golang配置</span></a></li></ol>
+        </div>
+          
+      </div>
+    </div>
+
+    
+  </div>
+
+
+
+
+
+
+
+
+
+
+<footer>
+<div class="site-footer">
+  <div class="social-container">
+    
+      
+        <a aria-label="跳转至github" href="https://github.com/shixiaocaia" target="_blank">
+          <i class="icon icon-github"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  
+    Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> <a href="https://github.com/f-dong/hexo-theme-minimalism" target="_blank">Theme</a>
+  
+  
+  
+  
+  
+  
+</div>
+</footer>
+
+
+      </div>
+    </div>
+    
+<script id="hexo-configurations"> window.theme_config = {"image":{"lazyload_enable":true,"photo_zoom":"simple-lightbox"}}; window.is_post = true; </script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+  <script src="/js/simple-lightbox.min.js"></script><script>document.addEventListener('DOMContentLoaded', function() {new SimpleLightbox('.post-detail .simple-lightbox', {fileExt: false,captionsData:'alt'});});</script></body>
+</html>
+
