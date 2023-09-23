@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>shixiaocaia</title>
+  
+  
+  <link href="https://shixiaocaia.github.io/atom.xml" rel="self"/>
+  
+  <link href="https://shixiaocaia.github.io/"/>
+  <updated>2023-09-08T02:54:09.192Z</updated>
+  <id>https://shixiaocaia.github.io/</id>
+  
+  <author>
+    <name>shixiaocaia</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>WSL中配置golang环境</title>
+    <link href="https://shixiaocaia.github.io/2023/09/03/1-wsl+golang/"/>
+    <id>https://shixiaocaia.github.io/2023/09/03/1-wsl+golang/</id>
+    <published>2023-09-03T08:07:22.000Z</published>
+    <updated>2023-09-08T02:54:09.192Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;配置WSL&quot;&gt;&lt;a href=&quot;#配置WSL&quot; class=&quot;headerlink&quot; title=&quot;配置WSL&quot;&gt;&lt;/a&gt;配置WSL&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;参考文章：&lt;a</summary>
+        
+      
+    
+    
+    
+    
+    <category term="Linux" scheme="https://shixiaocaia.github.io/tags/Linux/"/>
+    
+    <category term="golang" scheme="https://shixiaocaia.github.io/tags/golang/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Bitcask | 论文阅读</title>
+    <link href="https://shixiaocaia.github.io/2023/05/12/3-Bitcask/"/>
+    <id>https://shixiaocaia.github.io/2023/05/12/3-Bitcask/</id>
+    <published>2023-05-12T08:07:22.000Z</published>
+    <updated>2023-09-23T06:04:42.646Z</updated>
+    
+    
+    
+    
+    
+    <category term="是什么" scheme="https://shixiaocaia.github.io/tags/%E6%98%AF%E4%BB%80%E4%B9%88/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>nginx是什么</title>
+    <link href="https://shixiaocaia.github.io/2023/05/03/2-ngnix/"/>
+    <id>https://shixiaocaia.github.io/2023/05/03/2-ngnix/</id>
+    <published>2023-05-03T08:07:22.000Z</published>
+    <updated>2023-09-23T05:57:34.925Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;正向代理&quot;&gt;&lt;a href=&quot;#正向代理&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="是什么" scheme="https://shixiaocaia.github.io/tags/%E6%98%AF%E4%BB%80%E4%B9%88/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello Hexo</title>
+    <link href="https://shixiaocaia.github.io/2023/05/02/0-Hello%20World/"/>
+    <id>https://shixiaocaia.github.io/2023/05/02/0-Hello%20World/</id>
+    <published>2023-05-02T08:59:19.000Z</published>
+    <updated>2023-09-23T06:05:29.096Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;npm安装&quot;&gt;&lt;a href=&quot;#npm安装&quot; class=&quot;headerlink&quot; title=&quot;npm安装&quot;&gt;&lt;/a&gt;npm安装&lt;/h2&gt;&lt;p&gt;前往&lt;a</summary>
+        
+      
+    
+    
+    
+    
+    <category term="Hello world" scheme="https://shixiaocaia.github.io/tags/Hello-world/"/>
+    
+  </entry>
+  
+</feed>
