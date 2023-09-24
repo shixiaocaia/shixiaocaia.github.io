@@ -1,0 +1,116 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author"><title>分布式场景 | 全局ID生成 · shixiaocaia</title><meta name="description" content="参考文章
+
+Leaf——美团点评分布式ID生成系统
+
+
+背景在复杂分布式系统中，需要对大量的数据和消息进行唯一标识，比如美团点评的金融、支付、餐饮等产品系统，淘宝的订单号…
+单纯的数据库自增ID无法满足需求：
+
+ID冲突问题：在跨数据中心的分布式系统中，由于网络延迟和其他因素，单纯的数据库自增ID很"><meta name="og:description" content="参考文章
+
+Leaf——美团点评分布式ID生成系统
+
+
+背景在复杂分布式系统中，需要对大量的数据和消息进行唯一标识，比如美团点评的金融、支付、餐饮等产品系统，淘宝的订单号…
+单纯的数据库自增ID无法满足需求：
+
+ID冲突问题：在跨数据中心的分布式系统中，由于网络延迟和其他因素，单纯的数据库自增ID很"><meta name="twitter:site" content="shixiaocaia"><meta name="twitter:title" content="分布式场景 | 全局ID生成"><meta name="twitter:card" content="summary"><meta name="keywords" content=""><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="short icon" href="images/favicon.png" type="image/x-icon"><link rel="stylesheet" href="/css/bootstrap.min.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="stylesheet" href="/css/style.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"><meta name="generator" content="Hexo 6.3.0"><link rel="stylesheet" href="/css/prism.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head><body><div class="container" id="stage"><div class="row"><div class="col-sm-3 col-xs-12 side-container invisible" id="side-bar"><div class="vertical-text site-title"><h3 class="site-title-small" tabindex="-1"><a class="a-title" href="/">OutAtSea</a></h3><h1 class="site-title-large" tabindex="-1"><a class="a-title" href="/">是小菜啊</a></h1><!--h6(onclick="triggerSiteNav()") Trigger--></div><br class="visible-lg visible-md visible-sm"><div class="site-title-links" id="site-nav"><ul><li><a href="/">Home</a></li><li><a href="/archives">Archive</a></li><li><a href="/tags">Tags</a></li><li><a href="/about/index.html">About</a></li><li class="soc"><a href="https://github.com/shixiaocaia" target="_blank" rel="noopener noreferrer" aria-label="Github"><i class="fa fa-github">&nbsp;</i></a><a href="https://shixiaocaia.github.io/atom.xml" target="_blank" rel="noopener noreferrer" aria-label="RSS"><i class="fa fa-rss">&nbsp;</i></a></li></ul><div class="visible-lg visible-md visible-sm site-nav-footer"><br class="site-nav-footer-br"><footer><p>&copy;&nbsp;2023&nbsp;<a target="_blank" href="https://shixiaocaia.github.io" rel="noopener noreferrer">shixiaocaia</a></p><p>Theme&nbsp;<a target="_blank" href="https://github.com/SumiMakito/hexo-theme-typography" rel="noopener noreferrer">Typography</a>&nbsp;by&nbsp;<a target="_blank" href="https://www.keep.moe" rel="noopener noreferrer">Makito</a></p><p>Proudly published with&nbsp;<a target="_blank" href="https://hexo.io" rel="noopener noreferrer">Hexo</a></p></footer></div></div></div><div class="col-sm-9 col-xs-12 main-container invisible" id="main-container"><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post-container"><p class="post-title"><a>分布式场景 | 全局ID生成</a></p><p class="post-meta"><span class="date meta-item">Posted at&nbsp;2023-09-12</span><span class="meta-item"><i class="fa fa-tag"></i><span>&nbsp;</span><a class="a-tag" href="/tags/分布式/" title="分布式">分布式</a><span>&nbsp;</span></span></p><p class="post-abstract"><blockquote>
+<p>参考文章</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://tech.meituan.com/2017/04/21/mt-leaf.html">Leaf——美团点评分布式ID生成系统</a></li>
+</ul>
+</blockquote>
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>在复杂分布式系统中，需要对大量的数据和消息进行<strong>唯一标识</strong>，比如美团点评的金融、支付、餐饮等产品系统，淘宝的订单号…</p>
+<p>单纯的数据库自增ID无法满足需求：</p>
+<ol>
+<li>ID冲突问题：在跨数据中心的分布式系统中，由于网络延迟和其他因素，单纯的数据库自增ID很难确保全局唯一性。</li>
+<li>单点故障：如果数据库出现问题或宕机，那么新的ID将无法生成，从而影响整个系统的可用性。</li>
+<li>ID预测问题：因为自增ID是连续的，恶意用户可能会尝试预测下一个ID，从而可能进行某种形式的攻击或数据抓取。</li>
+<li>迁移和备份问题：在数据迁移或备份恢复的过程中，自增ID可能会带来问题，因为原始的ID序列可能会被打破。</li>
+<li>…</li>
+</ol>
+<p>一个好的ID生成系统应该满足什么：</p>
+<ul>
+<li>平均延迟和TP999延迟都要尽可能低；</li>
+<li>可用性5个9；</li>
+<li>高QPS。</li>
+</ul>
+<blockquote>
+<p>常用的性能评价指标：</p>
+<ul>
+<li>QPS：每秒钟处理的查询或请求数量。</li>
+<li>TPS：每秒钟处理的事务数量。事务的定义可以根据上下文而变，但通常指的是一个完整的操作，例如从数据库中读取或写入数据。</li>
+<li>RT：系统响应请求所需的时间。</li>
+<li>Latency：数据从源点到目的地的传输时间。</li>
+</ul>
+</blockquote>
+<h2 id="UUID"><a href="#UUID" class="headerlink" title="UUID"></a>UUID</h2><p>UUID(Universally Unique Identifier)的标准型式包含32个16进制数字，以连字号分为五段，形式为8-4-4-4-12的36个字符，示例：<code>550e8400-e29b-41d4-a716-446655440000</code>。</p>
+<p>存在几种不同版本的UUID，每个版本都有自己的生成方法。最常用的版本是v1（基于时间和机器的MAC地址）和v4（基于随机数）</p>
+<p>优点：性能高，基于本地生成，没有网络传输消耗。</p>
+<p>缺点：</p>
+<ul>
+<li>过长不易于存储：UUID本身包含32个16进制数，算上4个连字符，二进制下需要（32 + 4 ） * 4 &#x3D; 144位。</li>
+<li>信息不安全：基于MAC地址生成UUID的算法可能会造成MAC地址泄露。</li>
+<li>不适合作为DB主键，在特定场景下存在问题<ul>
+<li>MySQL官方有明确的建议主键要尽量越短越好</li>
+<li>作为主键时，有序性能够保证数据在物理上的顺序，提高数据的读取效率；在InnoDB的B+树索引下，支持主键的有序性能够保证范围查询的效率；每次插入新数据时，都是插入到主键索引的最后一个位置，这样就避免了数据移动和索引重建的开销</li>
+</ul>
+</li>
+</ul>
+<h2 id="雪花算法"><a href="#雪花算法" class="headerlink" title="雪花算法"></a>雪花算法</h2><h3 id="1-组成"><a href="#1-组成" class="headerlink" title="1. 组成"></a>1. 组成</h3><p>雪花算法是由Twitter开源的分布式ID生成算法，以划分命名空间的方式将 64-bit位分割成多个部分，每个部分代表不同的含义。</p>
+<p><img src="/../images/1460000040964520" alt="img"></p>
+<ul>
+<li>1位是符号位，也就是最高位，始终是0，没有任何意义，因为要是唯一计算机二进制补码中就是负数，0才是正数。</li>
+<li>41位是时间戳，具体到毫秒，41位的二进制可以使用69年，因为时间理论上永恒递增，所以根据这个排序是可以的。</li>
+<li>10位是机器标识，10位最多可以表示1024台机器，雪花算法的Id唯一性主要靠机器码保证。<ul>
+<li>如果对IDatacenter（互联网数据中心）有需求，还可以将 10-bit 分 5-bit 给 IDC，分5-bit给工作机器workerId，worker可以是进程、线程、协程等。</li>
+<li>在多个数据中心中使用相同的机器编号，由于 IDC 标识符的不同，也不会出现冲突。</li>
+<li><strong>可以采用本机IPv4地址最后两段以及进程Id一起作为机器码</strong>，确保机房内部不同机器，以及相同机器上的不同进程，拥有不同的机器码。</li>
+<li>如果要保证绝对不相同的机器码，可以通过手动设置唯一的workerID方式来实现。</li>
+</ul>
+</li>
+<li>12-bit位是自增序列，可表示2^12 &#x3D; 4096个数。</li>
+</ul>
+<h3 id="2-优缺点"><a href="#2-优缺点" class="headerlink" title="2. 优缺点"></a>2. 优缺点</h3><p>优点：</p>
+<ul>
+<li>毫秒数在高位，自增序列在低位，整个ID都是趋势递增的，后续插入数据库的索引树的时候，性能较高。</li>
+<li>生成ID时不依赖于数据库，完全在内存生成，高性能高可用。</li>
+<li>可以根据自身业务特性分配bit位，非常灵活。</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>强依赖机器时钟一致性，如果机器上时钟回拨，会导致发号重复或者服务会处于不可用状态。<ul>
+<li>回拨时间小的时候，不生成 ID，循环等待到时间点到达。</li>
+<li>回拨时间过长，利用拓展位，回拨之后在拓展位上加1就可以了，这样ID依然可以保持唯一。但是这个要求我们提前预留出位数，要么从机器id中，要么从序列号中，腾出一定的位，在时间回拨的时候，这个位置 <code>+1</code>。</li>
+<li>美团针对这个提出了Leaf方案，UidGenerator是百度开源的分布式ID生成器，其基于雪花算法实现。</li>
+</ul>
+</li>
+<li>在当第三部分的机器的数量超过机房的个数限制了，导致机器码重复，同一毫秒内，两个使用相同机器ID和数据中心ID的机器可能会产生完全相同的ID，尤其是如果它们的序列号也相同。</li>
+</ul>
+<h3 id="3-相关问题"><a href="#3-相关问题" class="headerlink" title="3. 相关问题"></a>3. 相关问题</h3><ol>
+<li><p>workId 怎么保证唯一？机器号是预先分配的，那实际中机器上下线情况，这个机器开始抢占了一个，后来下线了，新上来的机器如何分配</p>
+<ul>
+<li><p>可以通过分布式缓存来保存机器ID和workId之间的映射关系。启动的时候访问分布式缓存查询当前机器ID对应的workId，如果查询不到则获取一个并保存到分布式缓存中。</p>
+</li>
+<li><p>可通过Zookeeper管理workId，免去手动频繁修改集群节点，去配置机器ID的麻烦。当新机器上线时，它可以从ZooKeeper请求一个机器号；当机器下线时，这个号可以被回收并在未来重新分配</p>
+</li>
+<li><p>如果采用静态配置方案，每个机器号都是预先分配的，即使机器下线，机器号也不会重新分配，新机器加入只能手动分配。</p>
+</li>
+</ul>
+</li>
+<li><p>雪花算法1s之内最多可以生成多少个不同的ID</p>
+<ul>
+<li>12-bit位是序列号，可以标识2^12&#x3D;4096</li>
+<li>但考虑到1秒有1000毫秒，所以一个节点在1秒内最多可以生成：4096×1000&#x3D;4,096,000</li>
+<li>考虑到10位机器标识允许多达1024个节点，所以如果每个节点都达到最大生成能力，那么系统在1秒内总共可以生成：4,096,000×1024&#x3D;4,194,304,000，越41亿</li>
+<li>在10位机器全用于标识机器，全负载情况下，约能生成越41亿ID</li>
+</ul>
+</li>
+<li><p>随机数避免一个机器上面单秒之内的订单冲突，限制是多少，支持多少位</p>
+<ul>
+<li>标准的雪花算法如上，单个节点单毫秒内超过4096个部分，必须等到下一毫秒</li>
+</ul>
+</li>
+</ol>
+<h2 id="MySQL生成"><a href="#MySQL生成" class="headerlink" title="MySQL生成"></a>MySQL生成</h2><h2 id="Leaf算法"><a href="#Leaf算法" class="headerlink" title="Leaf算法"></a>Leaf算法</h2><h2 id="如何实现一个分布式ID生成的服务功能"><a href="#如何实现一个分布式ID生成的服务功能" class="headerlink" title="如何实现一个分布式ID生成的服务功能"></a>如何实现一个分布式ID生成的服务功能</h2></p></div><div class="share"><span>Share</span>&nbsp;<span class="soc"><a class="fa fa-bookmark" href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title);}})();" ref="nofollow" target="_blank"></a></span><span class="soc"><a class="fa fa-weibo" href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));"></a></span><span class="soc"><a class="fa fa-twitter" target="_blank" rel="noopener" href="http://twitter.com/home?status=https://shixiaocaia.github.io/2023/09/12/6-分布式ID/%20shixiaocaia%20分布式场景 | 全局ID生成"></a></span></div><div class="pagination"><p class="clearfix"><span>&nbsp;</span><span class="next pagbuttons"><a role="navigation" href="/2023/09/03/1-wsl+golang/" title="WSL中配置golang环境">Next post: WSL中配置golang环境&nbsp;<i class="fa fa-angle-double-right"></i></a></span></p></div></div></div></div><div class="visible-xs site-bottom-footer"><footer><p>&copy;&nbsp;2023&nbsp;<a target="_blank" href="https://shixiaocaia.github.io" rel="noopener noreferrer">shixiaocaia</a></p><p>Theme&nbsp;<a target="_blank" href="https://github.com/SumiMakito/hexo-theme-typography" rel="noopener noreferrer">Typography</a>&nbsp;by&nbsp;<a target="_blank" href="https://www.keep.moe" rel="noopener noreferrer">Makito</a></p><p>Proudly published with&nbsp;<a target="_blank" href="https://hexo.io" rel="noopener noreferrer">Hexo</a></p></footer></div></div></div></div><script src="/js/jquery-3.1.0.min.js"></script><script src="/js/bootstrap.min.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script><script src="/js/google-analytics.js"></script><script src="/js/typography.js"></script></body></html>
