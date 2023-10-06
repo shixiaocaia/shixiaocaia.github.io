@@ -1,2 +1,105 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author"><title>Bitcask | 论文阅读 · shixiaocaia</title><meta name="description" content=""><meta name="og:description" content=""><meta name="twitter:site" content="shixiaocaia"><meta name="twitter:title" content="Bitcask | 论文阅读"><meta name="twitter:card" content="summary"><meta name="keywords" content=""><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="short icon" href="images/favicon.png" type="image/x-icon"><link rel="stylesheet" href="/css/bootstrap.min.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="stylesheet" href="/css/style.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"><meta name="generator" content="Hexo 6.3.0"><link rel="stylesheet" href="/css/prism.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head><body><div class="container" id="stage"><div class="row"><div class="col-sm-3 col-xs-12 side-container invisible" id="side-bar"><div class="vertical-text site-title"><h3 class="site-title-small" tabindex="-1"><a class="a-title" href="/">OutAtSea</a></h3><h1 class="site-title-large" tabindex="-1"><a class="a-title" href="/">是小菜啊</a></h1><!--h6(onclick="triggerSiteNav()") Trigger--></div><br class="visible-lg visible-md visible-sm"><div class="site-title-links" id="site-nav"><ul><li><a href="/">Home</a></li><li><a href="/archives">Archive</a></li><li><a href="/tags">Tags</a></li><li><a href="/about/index.html">About</a></li><li class="soc"><a href="https://github.com/shixiaocaia" target="_blank" rel="noopener noreferrer" aria-label="Github"><i class="fa fa-github">&nbsp;</i></a><a href="https://shixiaocaia.github.io/atom.xml" target="_blank" rel="noopener noreferrer" aria-label="RSS"><i class="fa fa-rss">&nbsp;</i></a></li></ul><div class="visible-lg visible-md visible-sm site-nav-footer"><br class="site-nav-footer-br"><footer><p>&copy;&nbsp;2023&nbsp;<a target="_blank" href="https://shixiaocaia.github.io" rel="noopener noreferrer">shixiaocaia</a></p><p>Theme&nbsp;<a target="_blank" href="https://github.com/SumiMakito/hexo-theme-typography" rel="noopener noreferrer">Typography</a>&nbsp;by&nbsp;<a target="_blank" href="https://www.keep.moe" rel="noopener noreferrer">Makito</a></p><p>Proudly published with&nbsp;<a target="_blank" href="https://hexo.io" rel="noopener noreferrer">Hexo</a></p></footer></div></div></div><div class="col-sm-9 col-xs-12 main-container invisible" id="main-container"><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post-container"><p class="post-title"><a>Bitcask | 论文阅读</a></p><p class="post-meta"><span class="date meta-item">Posted at&nbsp;2023-05-12</span><span class="meta-item"><i class="fa fa-tag"></i><span>&nbsp;</span><a class="a-tag" href="/tags/是什么/" title="是什么">是什么</a><span>&nbsp;</span></span></p><p class="post-abstract"></p></div><div class="share"><span>Share</span>&nbsp;<span class="soc"><a class="fa fa-bookmark" href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title);}})();" ref="nofollow" target="_blank"></a></span><span class="soc"><a class="fa fa-weibo" href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));"></a></span><span class="soc"><a class="fa fa-twitter" target="_blank" rel="noopener" href="http://twitter.com/home?status=https://shixiaocaia.github.io/2023/05/12/3-Bitcask/%20shixiaocaia%20Bitcask | 论文阅读"></a></span></div><div class="pagination"><p class="clearfix"><span class="pre pagbuttons"><a role="navigation" href="/2023/07/12/5-MQ/" title="消息队列"><i class="fa fa-angle-double-left"></i>&nbsp;Previous post: 消息队列</a></span><span>&nbsp;</span><span class="next pagbuttons"><a role="navigation" href="/2023/05/03/2-ngnix/" title="Nginx是什么">Next post: Nginx是什么&nbsp;<i class="fa fa-angle-double-right"></i></a></span></p></div></div></div></div><div class="visible-xs site-bottom-footer"><footer><p>&copy;&nbsp;2023&nbsp;<a target="_blank" href="https://shixiaocaia.github.io" rel="noopener noreferrer">shixiaocaia</a></p><p>Theme&nbsp;<a target="_blank" href="https://github.com/SumiMakito/hexo-theme-typography" rel="noopener noreferrer">Typography</a>&nbsp;by&nbsp;<a target="_blank" href="https://www.keep.moe" rel="noopener noreferrer">Makito</a></p><p>Proudly published with&nbsp;<a target="_blank" href="https://hexo.io" rel="noopener noreferrer">Hexo</a></p></footer></div></div></div></div><script src="/js/jquery-3.1.0.min.js"></script><script src="/js/bootstrap.min.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script><script src="/js/google-analytics.js"></script><script src="/js/typography.js"></script></body></html>
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author"><title>Bitcask | 论文阅读 · shixiaocaia</title><meta name="description" content="Bitcask模型背景bitcask 存储模型最初是由一个做分布式存储系统的商业化公司 Riak 提出来的。
+Riak 有很多产品，其中就包括一个分布式 KV 存储系统 Riak KV，他们的分布式 KV 产品具有可插拔的存储引擎，可以独立于整个系统，单独开发和测试新的存储引擎。
+基于此，他们想打造"><meta name="og:description" content="Bitcask模型背景bitcask 存储模型最初是由一个做分布式存储系统的商业化公司 Riak 提出来的。
+Riak 有很多产品，其中就包括一个分布式 KV 存储系统 Riak KV，他们的分布式 KV 产品具有可插拔的存储引擎，可以独立于整个系统，单独开发和测试新的存储引擎。
+基于此，他们想打造"><meta name="twitter:site" content="shixiaocaia"><meta name="twitter:title" content="Bitcask | 论文阅读"><meta name="twitter:card" content="summary"><meta name="keywords" content=""><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="short icon" href="images/favicon.png" type="image/x-icon"><link rel="stylesheet" href="/css/bootstrap.min.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="stylesheet" href="/css/style.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"><meta name="generator" content="Hexo 6.3.0"><link rel="stylesheet" href="/css/prism.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head><body><div class="container" id="stage"><div class="row"><div class="col-sm-3 col-xs-12 side-container invisible" id="side-bar"><div class="vertical-text site-title"><h3 class="site-title-small" tabindex="-1"><a class="a-title" href="/">OutAtSea</a></h3><h1 class="site-title-large" tabindex="-1"><a class="a-title" href="/">是小菜啊</a></h1><!--h6(onclick="triggerSiteNav()") Trigger--></div><br class="visible-lg visible-md visible-sm"><div class="site-title-links" id="site-nav"><ul><li><a href="/">Home</a></li><li><a href="/archives">Archive</a></li><li><a href="/tags">Tags</a></li><li><a href="/about/index.html">About</a></li><li class="soc"><a href="https://github.com/shixiaocaia" target="_blank" rel="noopener noreferrer" aria-label="Github"><i class="fa fa-github">&nbsp;</i></a><a href="https://shixiaocaia.github.io/atom.xml" target="_blank" rel="noopener noreferrer" aria-label="RSS"><i class="fa fa-rss">&nbsp;</i></a></li></ul><div class="visible-lg visible-md visible-sm site-nav-footer"><br class="site-nav-footer-br"><footer><p>&copy;&nbsp;2023&nbsp;<a target="_blank" href="https://shixiaocaia.github.io" rel="noopener noreferrer">shixiaocaia</a></p><p>Theme&nbsp;<a target="_blank" href="https://github.com/SumiMakito/hexo-theme-typography" rel="noopener noreferrer">Typography</a>&nbsp;by&nbsp;<a target="_blank" href="https://www.keep.moe" rel="noopener noreferrer">Makito</a></p><p>Proudly published with&nbsp;<a target="_blank" href="https://hexo.io" rel="noopener noreferrer">Hexo</a></p></footer></div></div></div><div class="col-sm-9 col-xs-12 main-container invisible" id="main-container"><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post-container"><p class="post-title"><a>Bitcask | 论文阅读</a></p><p class="post-meta"><span class="date meta-item">Posted at&nbsp;2023-05-12</span><span class="meta-item"><i class="fa fa-tag"></i><span>&nbsp;</span><a class="a-tag" href="/tags/是什么/" title="是什么">是什么</a><span>&nbsp;</span></span></p><p class="post-abstract"><h2 id="Bitcask模型背景"><a href="#Bitcask模型背景" class="headerlink" title="Bitcask模型背景"></a>Bitcask模型背景</h2><p>bitcask 存储模型最初是由一个做分布式存储系统的商业化公司 Riak 提出来的。</p>
+<p>Riak 有很多产品，其中就包括一个分布式 KV 存储系统 Riak KV，他们的分布式 KV 产品具有可插拔的存储引擎，可以独立于整个系统，单独开发和测试新的存储引擎。</p>
+<p>基于此，他们想打造一个全新的存储引擎，在最理想的情况下，满足下面的这些条件：</p>
+<ul>
+<li><p>读写低延迟</p>
+</li>
+<li><p>高吞吐，特别是对大量的随机写入</p>
+</li>
+<li><p>能够处理超过内存容量的数据</p>
+</li>
+<li><p>崩溃恢复友好，能够保证快速恢复，尽量不丢数据</p>
+</li>
+<li><p>简单的备份和恢复策略</p>
+</li>
+<li><p>相对简单、易懂的代码结构和数据存储格式</p>
+</li>
+<li><p>在大数据量下，性能有保障</p>
+</li>
+<li><p>能够有自由的授权使用在 Riak 的系统中</p>
+</li>
+</ul>
+<p>现有的存储引擎，没有一个能够很好的满足这些条件，于是 Riak 团队重新设计了一个简洁高效的存储引擎<a target="_blank" rel="noopener" href="https://riak.com/assets/bitcask-intro.pdf">bitcask</a>。</p>
+<h2 id="存储模型实例"><a href="#存储模型实例" class="headerlink" title="存储模型实例"></a>存储模型实例</h2><p><img src="/../images/image-20231005102033724.png" alt="image-20231005102033724"></p>
+<p>Bitcask存储引擎最初的设计目标并不是追求最高的性能，而是追求足够的性能以及高质量、简单的代码设计和文件格式。</p>
+<blockquote>
+<p>However, our initial goal with Bitcask was not to be the fastest storage engine but rather to get ”enough” speed and also high quality and simplicity of code, design, and file format. </p>
+</blockquote>
+<p>最终实现的一个存储引擎实例，就是系统上的一个目录，并且限制同一时刻只能有一个进程进行写入。将一个进程看作数据库的服务端。</p>
+<blockquote>
+<p>这边在后续自己实现时，简化为每次只允许一个进程打开，通过文件锁来实现，读写操作并发问题通过锁保证。</p>
+</blockquote>
+<h3 id="数据文件"><a href="#数据文件" class="headerlink" title="数据文件"></a>数据文件</h3><p>在这个目录当中，存在多个数据文件，具体分为活跃文件和旧的数据文件（后续称为旧文件）：</p>
+<ul>
+<li>活跃文件仅存在打开数据库时，用于追加写入数据，追加写入性能更高。</li>
+<li>活跃文件写入一定数据量时，活跃文件转为旧文件，旧文件主要用于数据读取。</li>
+</ul>
+<p>在每个数据文件中存储了具体的记录信息：</p>
+<p><img src="/../images/image-20231005085420859.png" alt="image-20231005085420859"></p>
+<ul>
+<li>crc：数据校验，防止数据被破坏、篡改等</li>
+<li>timestamp：写入数据的时间戳</li>
+<li>ksz：key size，key 的大小</li>
+<li>value_sz：value size，value 的大小</li>
+<li>key：用户实际存储的 key</li>
+<li>value：用户实际存储的 value</li>
+</ul>
+<p>对于Put相当于写入一条记录到活跃文件，而Delete写入一条特殊的墓碑记录，标记前面的记录失效，而不是直接删除某条数据。在下次Merge过程中，才会清理无效的数据。</p>
+<h3 id="内存索引"><a href="#内存索引" class="headerlink" title="内存索引"></a>内存索引</h3><p>回顾Bitcask模型的设计初衷，”能够处理超过内存容量的数据“，所以Bitcask在内存索引中维护Value实际是存储在磁盘中的文件ID，偏移，记录大小。</p>
+<p><img src="/../images/image-20231005102126621.png" alt="image-20231005102126621"></p>
+<p>在数据追加写入到磁盘当中后，更新内存中的数据结构keydir，实际上就是key的一个集合，存储是key到磁盘文件的位置。</p>
+<p>keydir中存放了一条数据在磁盘中最新的数据，尽管旧的数据仍然存在，在加载或者更新时会使用最新的数据，在后续merge操作中清理无效数据。</p>
+<blockquote>
+<p>在论文中提到使用哈希表来存储，这里可以自由选择，常见可以选择BTree，B+Tree，ART，跳表等。</p>
+<p>例如哈希表，可以更高效的获取数据，但是无法遍历数据，如果想要数据有序遍历，可以选择 B 树、跳表等天然支持排序的数据结构。</p>
+</blockquote>
+<h3 id="数据读写"><a href="#数据读写" class="headerlink" title="数据读写"></a>数据读写</h3><p><img src="/../images/image-20231005102945464.png" alt="image-20231005102945464"></p>
+<p>在了解完数据文件和内存索引后，数据读取也清晰明了。首先根据key从内存中找到对应的记录，拿到记录实际在磁盘中的位置，根据位置找到磁盘中对应的数据文件，获取到完整的数据返回。</p>
+<p>由于旧的数据实际上一直存在于磁盘文件中，因为我们并没有将旧的数据删掉，而是新追加了一条标识其被删除的记录。因此论文当中提出了merge过程清理无效数据，避免旧的数据过多。merge 会遍历所有不可变的旧数据文件，将所有有效的数据重新写到新的数据文件中，并且将旧的数据文件删除掉。</p>
+<p>此外，由于数据存放在磁盘文件中，每次需要手动加载数据到内存索引中。当数据积累到一定量时，如果发生数据库重启，加载时间过长对业务造成一定的影响，因此论文当中提出，在merge过程中将有效数据写入到一个hint文件中，hint文件类似数据文件，不过它存储的时记录的位置信息。</p>
+<p>当bitcask启动时，直接加载hint文件中的数据，再加载未合并的数据，从而达到快速构建索引目的。</p>
+<h3 id="API接口"><a href="#API接口" class="headerlink" title="API接口"></a>API接口</h3><pre class="line-numbers language-shell"><code class="language-shell">// 打开一个 bitcask 数据库实例，使用传入的目录路径
+// 需要保证进程对该目录具有可读可写权限
+bitcask::Open(Directory Name);
+
+// 通过 Key 获取存储的 value
+bitcask::Get(Key);
+
+// 存储 key 和 value
+bitcask::Put(Key, Value);
+
+// 删除一个 key
+bitcask::Delete(Key);
+
+// 获取全部的 key
+bitcask::list_keys();
+
+// 遍历所有的数据，执行函数 Fun
+bitcask::Fold(Fun);
+
+// 执行 merge，清理无效数据
+bitcask::Merge(Directory Name);
+
+// 刷盘，将所有缓冲区的写入持久化到磁盘中
+bitcask::Sync();
+
+// 关闭数据库
+bitcask::Close();
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="整体回顾"><a href="#整体回顾" class="headerlink" title="整体回顾"></a>整体回顾</h2><p>Bitcask存储引擎是一个KV存储引擎，相比于Redis，通过将实际Value维护在磁盘中，能够处理超过内存容量的数据。</p>
+<p>回顾论文开头，Riak 团队提出的期望：</p>
+<ul>
+<li>首先，bitcask 很快，查询和写入都很快，因为读写都只有一次磁盘 IO</li>
+<li>写入数据还是顺序 IO，保证了高吞吐</li>
+<li>内存中不会存储实际的 value，因此在 value 较大的情况下，能够处理超过内存容量的数据</li>
+<li>提交日志和数据文件实际上就是同一个文件，数据的崩溃恢复能够得到保证</li>
+<li>备份和恢复非常简单，只需要拷贝整个数据目录即可</li>
+<li>设计简洁，数据文件格式易懂、易管理</li>
+</ul>
+<p>总体来说，bitcask 基本满足了设计的要求，是一个简洁优雅、高效的存储引擎。</p>
+</p></div><div class="share"><span>Share</span>&nbsp;<span class="soc"><a class="fa fa-bookmark" href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title);}})();" ref="nofollow" target="_blank"></a></span><span class="soc"><a class="fa fa-weibo" href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));"></a></span><span class="soc"><a class="fa fa-twitter" target="_blank" rel="noopener" href="http://twitter.com/home?status=https://shixiaocaia.github.io/2023/05/12/3-Bitcask/%20shixiaocaia%20Bitcask | 论文阅读"></a></span></div><div class="pagination"><p class="clearfix"><span class="pre pagbuttons"><a role="navigation" href="/2023/07/12/5-MQ/" title="消息队列"><i class="fa fa-angle-double-left"></i>&nbsp;Previous post: 消息队列</a></span><span>&nbsp;</span><span class="next pagbuttons"><a role="navigation" href="/2023/05/03/2-ngnix/" title="Nginx是什么">Next post: Nginx是什么&nbsp;<i class="fa fa-angle-double-right"></i></a></span></p></div></div></div></div><div class="visible-xs site-bottom-footer"><footer><p>&copy;&nbsp;2023&nbsp;<a target="_blank" href="https://shixiaocaia.github.io" rel="noopener noreferrer">shixiaocaia</a></p><p>Theme&nbsp;<a target="_blank" href="https://github.com/SumiMakito/hexo-theme-typography" rel="noopener noreferrer">Typography</a>&nbsp;by&nbsp;<a target="_blank" href="https://www.keep.moe" rel="noopener noreferrer">Makito</a></p><p>Proudly published with&nbsp;<a target="_blank" href="https://hexo.io" rel="noopener noreferrer">Hexo</a></p></footer></div></div></div></div><script src="/js/jquery-3.1.0.min.js"></script><script src="/js/bootstrap.min.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script><script src="/js/google-analytics.js"></script><script src="/js/typography.js"></script></body></html>

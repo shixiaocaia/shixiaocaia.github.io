@@ -1,0 +1,239 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author"><title>Git基本使用 · shixiaocaia</title><meta name="description" content="GeekHour Git教程
+
+环境配置# 配置SSH
+ssh-keygen -t rsa -C &quot;这里换上你的邮箱&quot;
+# 不需要密码，直接三次回车
+# 生成id_rsa和id_rsa.pub
+# 添加公钥pub文件内容，到Settings -- SSH and GPG keys
+cat ~/.ss"><meta name="og:description" content="GeekHour Git教程
+
+环境配置# 配置SSH
+ssh-keygen -t rsa -C &quot;这里换上你的邮箱&quot;
+# 不需要密码，直接三次回车
+# 生成id_rsa和id_rsa.pub
+# 添加公钥pub文件内容，到Settings -- SSH and GPG keys
+cat ~/.ss"><meta name="twitter:site" content="shixiaocaia"><meta name="twitter:title" content="Git基本使用"><meta name="twitter:card" content="summary"><meta name="keywords" content=""><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="short icon" href="images/favicon.png" type="image/x-icon"><link rel="stylesheet" href="/css/bootstrap.min.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="stylesheet" href="/css/style.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"><meta name="generator" content="Hexo 6.3.0"><link rel="stylesheet" href="/css/prism.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head><body><div class="container" id="stage"><div class="row"><div class="col-sm-3 col-xs-12 side-container invisible" id="side-bar"><div class="vertical-text site-title"><h3 class="site-title-small" tabindex="-1"><a class="a-title" href="/">OutAtSea</a></h3><h1 class="site-title-large" tabindex="-1"><a class="a-title" href="/">是小菜啊</a></h1><!--h6(onclick="triggerSiteNav()") Trigger--></div><br class="visible-lg visible-md visible-sm"><div class="site-title-links" id="site-nav"><ul><li><a href="/">Home</a></li><li><a href="/archives">Archive</a></li><li><a href="/tags">Tags</a></li><li><a href="/about/index.html">About</a></li><li class="soc"><a href="https://github.com/shixiaocaia" target="_blank" rel="noopener noreferrer" aria-label="Github"><i class="fa fa-github">&nbsp;</i></a><a href="https://shixiaocaia.github.io/atom.xml" target="_blank" rel="noopener noreferrer" aria-label="RSS"><i class="fa fa-rss">&nbsp;</i></a></li></ul><div class="visible-lg visible-md visible-sm site-nav-footer"><br class="site-nav-footer-br"><footer><p>&copy;&nbsp;2023&nbsp;<a target="_blank" href="https://shixiaocaia.github.io" rel="noopener noreferrer">shixiaocaia</a></p><p>Theme&nbsp;<a target="_blank" href="https://github.com/SumiMakito/hexo-theme-typography" rel="noopener noreferrer">Typography</a>&nbsp;by&nbsp;<a target="_blank" href="https://www.keep.moe" rel="noopener noreferrer">Makito</a></p><p>Proudly published with&nbsp;<a target="_blank" href="https://hexo.io" rel="noopener noreferrer">Hexo</a></p></footer></div></div></div><div class="col-sm-9 col-xs-12 main-container invisible" id="main-container"><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post-container"><p class="post-title"><a>Git基本使用</a></p><p class="post-meta"><span class="date meta-item">Posted at&nbsp;2023-03-29</span><span class="meta-item"><i class="fa fa-tag"></i><span>&nbsp;</span><a class="a-tag" href="/tags/是什么/" title="是什么">是什么</a><span>&nbsp;</span></span></p><p class="post-abstract"><blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/list/watchlater?oid=528356813&bvid=BV1HM411377j&spm_id_from=..top_right_bar_window_view_later.content.click&p=9">GeekHour Git教程</a></p>
+</blockquote>
+<h2 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h2><pre class="line-numbers language-shell"><code class="language-shell"># 配置SSH
+ssh-keygen -t rsa -C "这里换上你的邮箱"
+# 不需要密码，直接三次回车
+# 生成id_rsa和id_rsa.pub
+# 添加公钥pub文件内容，到Settings -- SSH and GPG keys
+cat ~/.ssh/id_rsa.pub
+# 测试配置成功
+ssh -T git@github.com 
+
+# 输入yes
+The authenticity of host 'github.com (20.205.243.166)' can't be established.
+ED25519 key fingerprint is SHA256:+DiY3wvvV6TuJJhbpZisF/zLDA0zPMSvHdkr4UvCOqU.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+
+Warning: Permanently added 'github.com' (ED25519) to the list of known hosts.
+Hi shixiaocaia! You've successfully authenticated, but GitHub does not provide shell access.
+
+# GitHub中添加SSH id_rsa.pub内容
+# 再次验证
+ssh -T git@github.com 
+
+# Hi shixiaocaia! You've successfully authenticated, but GitHub does not provide shell access.
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol>
+<li>下载Git，Win&#x2F;Liunx…</li>
+<li>配置用户信息</li>
+</ol>
+<pre class="line-numbers language-shell"><code class="language-shell"># 配置用户信息
+git config --global user.name "shixiaocaia"
+git config --global user.email shixiaocaia@gmail.com
+git config --list
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="3">
+<li>设置全局代理</li>
+</ol>
+<pre class="line-numbers language-shell"><code class="language-shell">git config --global http.proxy socks5://127.0.0.1:10808
+git config --global https.proxy socks5://127.0.0.1:10808
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<ol start="4">
+<li>配置SSH</li>
+</ol>
+<pre class="line-numbers language-shell"><code class="language-shell">ssh-keygen -t rsa -C "这里换上你的邮箱"
+# 不需要密码，直接三次回车
+# 生成id_rsa和id_rsa.pub
+# 添加公钥pub文件内容，到Settings -- SSH and GPG keys
+# Linux下显示私钥内容
+cat ~/.ssh/id_rsa.pub
+# 测试配置成功
+ssh -T git@github.com 
+
+# 输入yes
+The authenticity of host 'github.com (20.205.243.166)' can't be established.
+ED25519 key fingerprint is SHA256:+DiY3wvvV6TuJJhbpZisF/zLDA0zPMSvHdkr4UvCOqU.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+
+Warning: Permanently added 'github.com' (ED25519) to the list of known hosts.
+Hi shixiaocaia! You've successfully authenticated, but GitHub does not provide shell access.
+
+# GitHub中添加SSH id_rsa.pub内容
+# 再次验证
+ssh -T git@github.com 
+
+# Hi shixiaocaia! You've successfully authenticated, but GitHub does not provide shell access.
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="工作区域"><a href="#工作区域" class="headerlink" title="工作区域"></a>工作区域</h2><p><img src="/../images/0bc63cb7-4c90-4680-8749-9091a262b19c.png" alt="0bc63cb7-4c90-4680-8749-9091a262b19c"><br><img src="/../images/6f8f53a3-1bf8-499a-967f-28758e0993ec.png" alt="6f8f53a3-1bf8-499a-967f-28758e0993ec"></p>
+<ul>
+<li>workspace：实际操作的目录</li>
+<li>staging area：暂存区，临时存放修改</li>
+<li>local Repository：本地代码，版本信息</li>
+<li>Remote Repository：远程仓库</li>
+</ul>
+<hr>
+<p><img src="/../images/a528f4cb-9d53-40a7-bcda-23433dfbe999.png" alt="a528f4cb-9d53-40a7-bcda-23433dfbe999">一开始创建文件，是未跟踪状态，通过<code>git add .</code>添加到暂存区</p>
+<ul>
+<li><code>git commit</code>只会提交暂存区的内容，不会提交工作区内的内容，所以需要先<code>git add.</code>添加所有文件到暂存区，再提交</li>
+<li><code>git ls-files</code>查看暂存区内容</li>
+<li><code>git log</code>查看commit记录，<code>git log --oneline</code>查看简洁提交记录</li>
+<li><code>git rest</code>回退到某一个版本<ul>
+<li>–soft，保留工作区和暂存区</li>
+<li>–hard，删除两个版本之间工作区和暂存区的内容</li>
+<li>–mixed，只保留工作区内容，清空暂存区内容</li>
+<li>指令后面跟上版本号，比如<code>git rest --hard 234asda</code></li>
+<li>如果误操作了Git，<code>git -reflog</code>操作的历史记录，然后使用<code>git rest --hard 234asda</code>回退误操作之前的命令</li>
+</ul>
+</li>
+<li><code>git diff</code>默认查看工作区和暂存区之间的差异内容<ul>
+<li><code>git diff HEAD</code>查看工作区和最新提交之间的之间的差异</li>
+<li><code>git diff --cached</code>查看工作区和版本库之间的差异</li>
+<li><code>git diff 234asd 123asda</code> 比较不同提交的差异，或者比较提交和HEAD的差异</li>
+<li><code>git diff HEAD~ HEAD</code> 查看当前提交和上一个提交的差异，波浪线后可以加数字表示前几个版本</li>
+</ul>
+</li>
+<li>删除操作，先删除本地文件，再提交，删除暂存区的记录<ul>
+<li><code>git rm &lt;file&gt;</code>，同时删除工作区和暂存区记录</li>
+<li><code>git rm --cached &lt;file&gt;</code>删除暂存区记录</li>
+<li>删除后记得提交</li>
+</ul>
+</li>
+</ul>
+<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><h3 id="init"><a href="#init" class="headerlink" title="init"></a>init</h3><pre class="line-numbers language-shell"><code class="language-shell">git init
+
+git remote add origin url / ssh
+# 使用ssh连接不需要登陆验证
+
+git pull -u origin main
+# 拉取origin的main分支到本地main分支
+# -u 将远程仓库和本地仓库关联起来
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>如果使用git clone同步项目到本地，而上述更多是从直接将本地文件夹与远端仓库建立连接</li>
+<li>初始化后的.git文件夹，通过<code>ls -a</code>显示，包含了仓库的信息，一般隐藏避免删除</li>
+<li><code>git remote -v</code>获取远程仓库信息</li>
+</ul>
+<h3 id="branch"><a href="#branch" class="headerlink" title="branch"></a>branch</h3><pre class="line-numbers language-shell"><code class="language-shell"># 查看本地分支
+git branch
+# 查看远程分支
+git branch -r
+# 查看所有分支
+git branch -a
+
+# 切换到test分支
+git checkout test
+# 推荐使用switch切换分支，checkout具有恢复功能，容易引起误解
+git switch test
+
+# 创建分支
+git branch hello
+
+# 创建并切换分支
+git branch -b main
+
+# 删除分支
+git branch -d local_branch_name
+git branch origin :remote_branch_name
+# :表示删除
+# 如果是未被合并的命令，需要通过-D来强制删除
+
+# 查看分支属于哪部分拉出来的
+git reflog --date=local | grep <branchname> 
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="push"><a href="#push" class="headerlink" title="push"></a>push</h3><pre class="line-numbers language-shell"><code class="language-shell"># 拉取最新远程代码到本地
+git fetch
+
+# 合并最新代码
+git merge origin/main
+
+# git pull = git fetch & git merge origin main
+git pull <远程主机名> <远程分支名>:<本地分支名>
+# 一般本地分支名和远程分支名相同时，合并分支名
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>在不同分支下开发，不需要先merge主分支的内容，通过提交PR，完成和主分支的合并</li>
+<li>当开发新功能，从主分支拉取，过程中可能也会pull最新代码</li>
+</ul>
+<h3 id="gitignore"><a href="#gitignore" class="headerlink" title="gitignore"></a>gitignore</h3><pre class="line-numbers language-shell"><code class="language-shell">touch .gitignore
+
+git rm  --cached xxx
+# 添加 xxx/
+
+git commit -m"gitignore"
+git push origin main
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>哪些文件应该被忽略<ul>
+<li>系统或者软件自动生成的文件</li>
+<li>编译产生的中间文件和结果文件</li>
+<li>运行时生成的日志文件、缓存文件、临时文件</li>
+<li>涉及身份、密码、口令、密钥等敏感信息文件</li>
+</ul>
+</li>
+<li>将需要忽略的文件写入到gitignore文件当中，<strong>如果文件已经存在版本库当中，需要先删除，才能生效</strong><ul>
+<li>git rm  –cached xxx删除记录</li>
+</ul>
+</li>
+<li>根据官方的gitignore的不同语言版本进行修改</li>
+</ul>
+<h3 id="merge-VS-rebase"><a href="#merge-VS-rebase" class="headerlink" title="merge VS rebase"></a>merge VS rebase</h3><ul>
+<li>当产生冲突时，需要处理冲突部分文件，再重新提交merge后的结果</li>
+<li>使用git merge，最后会生成一个merge提交记录</li>
+</ul>
+<p><img src="/../images/image-20230930092527055.png" alt="image-20230930092527055"></p>
+<ul>
+<li>git rebase<ul>
+<li>在dev分支下，git rebase main会把两个分支的交界点开始，后的dev:1，dev:2分支内容移动到main的head头节点之后，并且此时总的分支为dev</li>
+<li>对比左侧和右侧，右侧最终合并后的分支记录全部保存到main当中</li>
+<li>git switch&#x2F;checkout branch，决定了最终分支名</li>
+<li>git rebase branch，决定了交界点之后，以那一条线为主线，移动另一条线到最后</li>
+</ul>
+</li>
+<li>git rebase和git merge区别<ul>
+<li>git merge不会破坏原分支的提交记录，方便回溯和查看。缺点是产生额外的提交节点，分支图比较复杂</li>
+<li>git rebase不需要新增额外的提交记录，形成线性历史，直观和干净。缺点会改变提交历史，改变当前分支branch out的节点，<strong>避免在共享分支中使用</strong>。</li>
+<li>如果是一个人开发，为了提交记录的清晰明了，使用git rebase</li>
+</ul>
+</li>
+</ul>
+<h2 id="GitFlow模型"><a href="#GitFlow模型" class="headerlink" title="GitFlow模型"></a>GitFlow模型</h2><p><img src="/../images/20230930.webp" alt="img"></p>
+<ul>
+<li>主要分支<ul>
+<li>main&#x2F;master分支：可以部署发布</li>
+<li>develop分支：最新开发状态</li>
+</ul>
+</li>
+<li>辅助分支<ul>
+<li>feature: <strong>开发新功能</strong>的分支, 基于 develop, 完成后 merge 回 develop；</li>
+<li>release: 辅助版本发布的分支, 用来<strong>测试修复</strong> bug，基于 develop, 完成后 merge 回 develop 和 master</li>
+<li>hotfix: <strong>修复 main 上的问题</strong>,  基于 master, 完成后 merge 回 master 和 develop</li>
+</ul>
+</li>
+<li>通过git-flow使用</li>
+<li>GitFlow模型分支管理严格，代码合并清晰，适合中大型团队使用，但是分支流程过多较为复杂</li>
+</ul>
+<h2 id="Github-Flow模型"><a href="#Github-Flow模型" class="headerlink" title="Github Flow模型"></a>Github Flow模型</h2><p><img src="/../images/202309301.png" alt="img"></p>
+<ul>
+<li>主要维护一个主分支master&#x2F;main，是随时可以部署发布的内容</li>
+<li>需求新增基于master分支，合并到master分支需要PR，master分支内容一经合并，可以立即部署使用</li>
+<li>相比前者分支足够简单，但不适合多版本产品线使用</li>
+</ul>
+</p></div><div class="share"><span>Share</span>&nbsp;<span class="soc"><a class="fa fa-bookmark" href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title);}})();" ref="nofollow" target="_blank"></a></span><span class="soc"><a class="fa fa-weibo" href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));"></a></span><span class="soc"><a class="fa fa-twitter" target="_blank" rel="noopener" href="http://twitter.com/home?status=https://shixiaocaia.github.io/2023/03/29/7-Git/%20shixiaocaia%20Git基本使用"></a></span></div><div class="pagination"><p class="clearfix"><span class="pre pagbuttons"><a role="navigation" href="/2023/05/03/2-ngnix/" title="Nginx是什么"><i class="fa fa-angle-double-left"></i>&nbsp;Previous post: Nginx是什么</a></span><span>&nbsp;</span><span class="next pagbuttons"><a role="navigation" href="/2023/02/02/0-Hello%20World/" title="Hello Hexo">Next post: Hello Hexo&nbsp;<i class="fa fa-angle-double-right"></i></a></span></p></div></div></div></div><div class="visible-xs site-bottom-footer"><footer><p>&copy;&nbsp;2023&nbsp;<a target="_blank" href="https://shixiaocaia.github.io" rel="noopener noreferrer">shixiaocaia</a></p><p>Theme&nbsp;<a target="_blank" href="https://github.com/SumiMakito/hexo-theme-typography" rel="noopener noreferrer">Typography</a>&nbsp;by&nbsp;<a target="_blank" href="https://www.keep.moe" rel="noopener noreferrer">Makito</a></p><p>Proudly published with&nbsp;<a target="_blank" href="https://hexo.io" rel="noopener noreferrer">Hexo</a></p></footer></div></div></div></div><script src="/js/jquery-3.1.0.min.js"></script><script src="/js/bootstrap.min.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script><script src="/js/google-analytics.js"></script><script src="/js/typography.js"></script></body></html>

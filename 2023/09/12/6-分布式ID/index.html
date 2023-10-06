@@ -1,24 +1,30 @@
 <!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author"><title>分布式场景 | 全局ID生成 · shixiaocaia</title><meta name="description" content="参考文章
 
 Leaf——美团点评分布式ID生成系统
+JavaGuide
+分布式系统-全局唯一ID实现方案
 
 
 背景在复杂分布式系统中，需要对大量的数据和消息进行唯一标识，比如美团点评的金融、支付、餐饮等产品系统，淘宝的订单号…
 单纯的数据库自增ID无法满足需求：
 
-ID冲突问题：在跨数据中心的分布式系统中，由于网络延迟和其他因素，单纯的数据库自增ID很"><meta name="og:description" content="参考文章
+ID冲突问题：在跨数据中心的分布式"><meta name="og:description" content="参考文章
 
 Leaf——美团点评分布式ID生成系统
+JavaGuide
+分布式系统-全局唯一ID实现方案
 
 
 背景在复杂分布式系统中，需要对大量的数据和消息进行唯一标识，比如美团点评的金融、支付、餐饮等产品系统，淘宝的订单号…
 单纯的数据库自增ID无法满足需求：
 
-ID冲突问题：在跨数据中心的分布式系统中，由于网络延迟和其他因素，单纯的数据库自增ID很"><meta name="twitter:site" content="shixiaocaia"><meta name="twitter:title" content="分布式场景 | 全局ID生成"><meta name="twitter:card" content="summary"><meta name="keywords" content=""><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="short icon" href="images/favicon.png" type="image/x-icon"><link rel="stylesheet" href="/css/bootstrap.min.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="stylesheet" href="/css/style.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"><meta name="generator" content="Hexo 6.3.0"><link rel="stylesheet" href="/css/prism.css" type="text/css">
+ID冲突问题：在跨数据中心的分布式"><meta name="twitter:site" content="shixiaocaia"><meta name="twitter:title" content="分布式场景 | 全局ID生成"><meta name="twitter:card" content="summary"><meta name="keywords" content=""><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="short icon" href="images/favicon.png" type="image/x-icon"><link rel="stylesheet" href="/css/bootstrap.min.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="stylesheet" href="/css/style.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"><meta name="generator" content="Hexo 6.3.0"><link rel="stylesheet" href="/css/prism.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head><body><div class="container" id="stage"><div class="row"><div class="col-sm-3 col-xs-12 side-container invisible" id="side-bar"><div class="vertical-text site-title"><h3 class="site-title-small" tabindex="-1"><a class="a-title" href="/">OutAtSea</a></h3><h1 class="site-title-large" tabindex="-1"><a class="a-title" href="/">是小菜啊</a></h1><!--h6(onclick="triggerSiteNav()") Trigger--></div><br class="visible-lg visible-md visible-sm"><div class="site-title-links" id="site-nav"><ul><li><a href="/">Home</a></li><li><a href="/archives">Archive</a></li><li><a href="/tags">Tags</a></li><li><a href="/about/index.html">About</a></li><li class="soc"><a href="https://github.com/shixiaocaia" target="_blank" rel="noopener noreferrer" aria-label="Github"><i class="fa fa-github">&nbsp;</i></a><a href="https://shixiaocaia.github.io/atom.xml" target="_blank" rel="noopener noreferrer" aria-label="RSS"><i class="fa fa-rss">&nbsp;</i></a></li></ul><div class="visible-lg visible-md visible-sm site-nav-footer"><br class="site-nav-footer-br"><footer><p>&copy;&nbsp;2023&nbsp;<a target="_blank" href="https://shixiaocaia.github.io" rel="noopener noreferrer">shixiaocaia</a></p><p>Theme&nbsp;<a target="_blank" href="https://github.com/SumiMakito/hexo-theme-typography" rel="noopener noreferrer">Typography</a>&nbsp;by&nbsp;<a target="_blank" href="https://www.keep.moe" rel="noopener noreferrer">Makito</a></p><p>Proudly published with&nbsp;<a target="_blank" href="https://hexo.io" rel="noopener noreferrer">Hexo</a></p></footer></div></div></div><div class="col-sm-9 col-xs-12 main-container invisible" id="main-container"><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post-container"><p class="post-title"><a>分布式场景 | 全局ID生成</a></p><p class="post-meta"><span class="date meta-item">Posted at&nbsp;2023-09-12</span><span class="meta-item"><i class="fa fa-tag"></i><span>&nbsp;</span><a class="a-tag" href="/tags/分布式/" title="分布式">分布式</a><span>&nbsp;</span></span></p><p class="post-abstract"><blockquote>
 <p>参考文章</p>
 <ul>
 <li><a target="_blank" rel="noopener" href="https://tech.meituan.com/2017/04/21/mt-leaf.html">Leaf——美团点评分布式ID生成系统</a></li>
+<li><a target="_blank" rel="noopener" href="https://javaguide.cn/distributed-system/distributed-id.html">JavaGuide</a></li>
+<li><a target="_blank" rel="noopener" href="https://pdai.tech/md/arch/arch-z-id.html">分布式系统-全局唯一ID实现方案</a></li>
 </ul>
 </blockquote>
 <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>在复杂分布式系统中，需要对大量的数据和消息进行<strong>唯一标识</strong>，比如美团点评的金融、支付、餐饮等产品系统，淘宝的订单号…</p>
@@ -32,9 +38,10 @@ ID冲突问题：在跨数据中心的分布式系统中，由于网络延迟和
 </ol>
 <p>一个好的ID生成系统应该满足什么：</p>
 <ul>
-<li>平均延迟和TP999延迟都要尽可能低；</li>
-<li>可用性5个9；</li>
-<li>高QPS。</li>
+<li>全局唯一性</li>
+<li>趋势递增</li>
+<li>单调递增</li>
+<li>信息安全</li>
 </ul>
 <blockquote>
 <p>常用的性能评价指标：</p>
@@ -113,4 +120,107 @@ ID冲突问题：在跨数据中心的分布式系统中，由于网络延迟和
 </ul>
 </li>
 </ol>
-<h2 id="MySQL生成"><a href="#MySQL生成" class="headerlink" title="MySQL生成"></a>MySQL生成</h2><h2 id="Leaf算法"><a href="#Leaf算法" class="headerlink" title="Leaf算法"></a>Leaf算法</h2><h2 id="如何实现一个分布式ID生成的服务功能"><a href="#如何实现一个分布式ID生成的服务功能" class="headerlink" title="如何实现一个分布式ID生成的服务功能"></a>如何实现一个分布式ID生成的服务功能</h2></p></div><div class="share"><span>Share</span>&nbsp;<span class="soc"><a class="fa fa-bookmark" href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title);}})();" ref="nofollow" target="_blank"></a></span><span class="soc"><a class="fa fa-weibo" href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));"></a></span><span class="soc"><a class="fa fa-twitter" target="_blank" rel="noopener" href="http://twitter.com/home?status=https://shixiaocaia.github.io/2023/09/12/6-分布式ID/%20shixiaocaia%20分布式场景 | 全局ID生成"></a></span></div><div class="pagination"><p class="clearfix"><span>&nbsp;</span><span class="next pagbuttons"><a role="navigation" href="/2023/09/03/1-wsl+golang/" title="WSL中配置golang环境">Next post: WSL中配置golang环境&nbsp;<i class="fa fa-angle-double-right"></i></a></span></p></div></div></div></div><div class="visible-xs site-bottom-footer"><footer><p>&copy;&nbsp;2023&nbsp;<a target="_blank" href="https://shixiaocaia.github.io" rel="noopener noreferrer">shixiaocaia</a></p><p>Theme&nbsp;<a target="_blank" href="https://github.com/SumiMakito/hexo-theme-typography" rel="noopener noreferrer">Typography</a>&nbsp;by&nbsp;<a target="_blank" href="https://www.keep.moe" rel="noopener noreferrer">Makito</a></p><p>Proudly published with&nbsp;<a target="_blank" href="https://hexo.io" rel="noopener noreferrer">Hexo</a></p></footer></div></div></div></div><script src="/js/jquery-3.1.0.min.js"></script><script src="/js/bootstrap.min.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script><script src="/js/google-analytics.js"></script><script src="/js/typography.js"></script></body></html>
+<h2 id="MySQL实现"><a href="#MySQL实现" class="headerlink" title="MySQL实现"></a>MySQL实现</h2><p>MySQL通过参数<code>auto_increment_increment</code>和<code>auto_increment_offset</code>，设置主键（自增列）开始的ID值和每次递增的偏移值参数。</p>
+<p>优点：</p>
+<ul>
+<li>非常简单，利用现有数据库系统的功能实现，成本小，有DBA专业维护。</li>
+<li>ID号单调自增，可以实现一些对ID有特殊要求的业务。</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>强依赖DB，当DB异常时整个系统不可用，属于致命问题。配置主从复制可以尽可能的增加可用性，但是数据一致性在特殊情况下难以保证。主从切换时的不一致可能会导致重复发号。</li>
+<li>ID发号性能瓶颈限制在单台MySQL的读写性能。</li>
+</ul>
+<p>为了解决MySQL的性能问题，提出如下的解决办法：通过部署多台机器，每台机器设置不同的初始值，且步长和机器数相等。保证每台机器之间生成不同的Id。</p>
+<p>但是这又带来相应问题问题：<strong>水平扩展比较困难</strong>，前面提到步长和机器数相等，在初期已经定好步长和机器数后，添加机器要麻烦的多。需要先将扩展的机器设置在之前机器生成的ID范围之后，保证生成id唯一性，然后调整之前的机器到定义的号码段，当机器数量大时，扩容十分困难。</p>
+<p>同时<strong>ID没有了单调递增</strong>的特性，只能趋势增加，每次获取ID读写数据库，数据库压力大时，只能靠堆机器来提高性能。</p>
+<h2 id="Redis实现"><a href="#Redis实现" class="headerlink" title="Redis实现"></a>Redis实现</h2><p>Redis实现分布式唯一ID主要是通过提供像 <code>INCR</code> 和 <code>INCRBY</code> 这样的自增原子命令，由于Redis自身的单线程的特点所以能保证生成的 ID 肯定是唯一有序的。</p>
+<pre class="line-numbers language-shell"><code class="language-shell">127.0.0.1:6379> set sequence_id_biz_type 1
+OK
+127.0.0.1:6379> incr sequence_id_biz_type
+(integer) 2
+127.0.0.1:6379> get sequence_id_biz_type
+"2"
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>当采用集群方式获取高吞吐量时，像MySQL方式一样，设置每台Redis值不同的初始值和偏移值，当时引入的成本极大。</p>
+<p>同时Redis是基于内存的，需要持久化数据，避免重启机器或者机器故障后数据丢失。Redis主要通过AOF和RDB实现持久化。</p>
+<p>优点：性能高，生成的数据有序递增</p>
+<p>缺点：引入Redis，增加系统的复杂度</p>
+<ul>
+<li>依赖于redis，需要系统引进redis，增加了系统的复杂性</li>
+<li>在单机上是递增的，但是由于涉及到分布式环境，每台机器上的时钟不可能完全同步，有时候会出现不时全局递增的情况</li>
+</ul>
+<h2 id="Leaf算法"><a href="#Leaf算法" class="headerlink" title="Leaf算法"></a>Leaf算法</h2><h3 id="Leaf-segment"><a href="#Leaf-segment" class="headerlink" title="Leaf-segment"></a>Leaf-segment</h3><p>美团在数据库生成的方案上，提出了改进，通过批量获取ID值，避免每次获取ID都读写数据库，造成数据库压力过大。</p>
+<ul>
+<li>通过维护一张表，记录不同业务的发号需求，保证每个biz-tag的ID获取相互隔离，互补影响</li>
+<li>每次根据业务中的step，获取一个segment的号段的值，用完再去数据库获取新的号段</li>
+<li>当后续业务因为性能对数据库扩容时，只需要对biz_tag分库分表即可</li>
+</ul>
+<p>优点：</p>
+<ul>
+<li>Leaf服务可以很方便的<strong>线性扩展</strong>，性能完全能够支撑大多数业务场景</li>
+<li>ID号码是趋势递增的8byte的64位数字，满足上述数据库存储的主键要求</li>
+<li>容灾性高：Leaf服务内部有号段缓存，即使DB宕机，短时间内Leaf仍能正常对外提供服务</li>
+<li>可以自定义max_id（表示该业务当前被分配的ID号段的最大值）的大小，非常方便业务从原有的ID方式上迁移过来</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>ID号码不够随机，能够泄露发号数量的信息，不太安全。</li>
+<li>TP999数据波动大，当号段使用完之后还是会hang在更新数据库的I&#x2F;O上，tg999数据会出现偶尔的尖刺。</li>
+<li>DB宕机会造成整个系统不可用。</li>
+</ul>
+<h3 id="双buffer优化"><a href="#双buffer优化" class="headerlink" title="双buffer优化"></a>双buffer优化</h3><p>前面叙述的Leaf-segment，在号段消耗完后进行取号，在这个过程中由于网络抖动、慢查询造成号段没有取到或者延迟，造成线程阻塞（无法分配新的主键ID）。</p>
+<p>采用双buffer，在Leaf服务内部用两个号段缓存区segment，当一个号段消费10%时，去另起线程更新下一个号段，当前号段全部消费完时，如果下一个segment准备好了，就直接切换过去，循环反复。</p>
+<ul>
+<li>将segment设置为服务高峰期发号QPS的600倍，即使DB宕机，也能保证一段时间内的持续发号，业务不受影响</li>
+</ul>
+<blockquote>
+<p>我理解这里两端segment是缓存在数据库之外的。</p>
+</blockquote>
+<ul>
+<li>每次请求来临，会判断下一个号段的状态，从而更新此号段，偶尔的网络抖动不会影响下个号段的更新</li>
+</ul>
+<h3 id="Leaf-snowflake"><a href="#Leaf-snowflake" class="headerlink" title="Leaf-snowflake"></a>Leaf-snowflake</h3><p>Leaf-segment生成的ID是可以计算的，不适合订单生成场景，容易被竞对计算出销量，泄露信息。</p>
+<p>接着美团提出了Leaf-snowflake方案，沿用snowflake方案的bit设计。</p>
+<p>相比传统雪花算法，采用Zookeeper持久顺序节点的特性，自动对snowflake节点配置workerID：</p>
+<ol>
+<li>启动Leaf-snowflake服务，连接Zookeeper，在leaf_forever父节点下检查自己是否已经注册过（是否有该顺序子节点）。</li>
+<li>如果有注册过直接取回自己的workerID（zk顺序节点生成的int类型ID号），启动服务。</li>
+<li>如果没有注册过，就在该父节点下面创建一个持久顺序节点，创建成功后取回顺序号当做自己的workerID号，启动服务。</li>
+</ol>
+<h3 id="弱依赖ZooKeeper"><a href="#弱依赖ZooKeeper" class="headerlink" title="弱依赖ZooKeeper"></a>弱依赖ZooKeeper</h3><p>每次去ZK获取数据后，也会在本机文件系统上缓存一个workerID文件，当ZK出现问题，恰好问题出现问题需要重启时，能保证服务正常启动，减少对ZK的依赖。</p>
+<h3 id="解决时钟问题"><a href="#解决时钟问题" class="headerlink" title="解决时钟问题"></a>解决时钟问题</h3><p>雪花算法对于时钟具有依赖性，如果机器的时钟发生了回拨，可能会生成重复的ID号，需要解决<strong>时钟回退</strong>的问题。</p>
+<ul>
+<li>首先通过ZK检查是否写过节点</li>
+<li>如果写过，通过当前的自身系统时间与之前的周期性上传的时间对比，如果小于说明发生了大步长回拨，服务启动失败并报警</li>
+<li>如果没有写过说明是一个新服务节点，直接创建持久节点，写入自身系统时间。</li>
+<li>接着对比其他Leaf节点的系统时间，来判断自身系统时间是否正确，获取到所有临时节点的系统的系统时间，计算出平均时间，如果系统时间与平均值的差值小于阈值，说明是正常的，否则认为发生了大步长偏移，启动失败报警</li>
+<li>每隔一段时间(3s)上报自身系统时间写入leaf_forever</li>
+</ul>
+<blockquote>
+<p>ZK中包含了leaf_forever和leaf_temporary的两种节点。</p>
+<ul>
+<li>leaf_forever是ZK创建的普通节点，不会受到客户端会话的影响，除非主动删除或者ZK集群崩溃，节点一直存在。这些节点通常用于存储持久性的配置信息、元数据或其他长期存在的数据。</li>
+<li>leaf_temporary是临时节点，其生命周期与创建该节点的客户端会话相关联。如果会话结束（比如客户端崩溃或关闭连接），临时节点会被自动删除。这些节点通常用于表示短期状态、临时任务或服务实例的存在。比如，服务实例启动时可以创建临时节点，退出时会自动删除该节点。</li>
+</ul>
+</blockquote>
+<p>美团也提出由于雪花算法对时钟强依赖性，对时间的要求比较敏感，在机器工作时NTP同步（计算机网络时间同步）也会造成秒级别的回退，建议可以直接关闭NTP同步。要么在时钟回拨的时候直接不提供服务直接返回ERROR_CODE，等时钟追上即可。<strong>或者做一层重试，然后上报报警系统，更或者是发现有时钟回拨之后自动摘除本身节点并报警</strong>。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>UUID：</p>
+<ul>
+<li>通过机器网卡、当地时间、随机数方式生成，本地生成。可以通过当前的时间戳及机器 mac 地址来生成，可以确保生成的 UUID 全球唯一</li>
+<li>生成的位数多，不易于存储</li>
+<li>生成的ID是无序字符串，查询效率低下，没有实际业务含义</li>
+</ul>
+<p>雪花算法：</p>
+<ul>
+<li>对于时钟具有强依赖性，有时间回拨缺点。</li>
+<li>可以通过其他为划分，当发生时间回拨时，启动额外的位，避免ID重复</li>
+<li>对于小尺度，可以通过等待时间正常</li>
+<li>或者是抛出异常，退出</li>
+</ul>
+<p>MySQL生成：</p>
+<ul>
+<li>每次都需要读写数据库，性能差</li>
+<li>通过多机部署方式，设置不同的初始值和偏移量，但是水平难以扩展</li>
+</ul>
+</p></div><div class="share"><span>Share</span>&nbsp;<span class="soc"><a class="fa fa-bookmark" href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title);}})();" ref="nofollow" target="_blank"></a></span><span class="soc"><a class="fa fa-weibo" href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));"></a></span><span class="soc"><a class="fa fa-twitter" target="_blank" rel="noopener" href="http://twitter.com/home?status=https://shixiaocaia.github.io/2023/09/12/6-分布式ID/%20shixiaocaia%20分布式场景 | 全局ID生成"></a></span></div><div class="pagination"><p class="clearfix"><span>&nbsp;</span><span class="next pagbuttons"><a role="navigation" href="/2023/09/03/1-wsl+golang/" title="WSL中配置golang环境">Next post: WSL中配置golang环境&nbsp;<i class="fa fa-angle-double-right"></i></a></span></p></div></div></div></div><div class="visible-xs site-bottom-footer"><footer><p>&copy;&nbsp;2023&nbsp;<a target="_blank" href="https://shixiaocaia.github.io" rel="noopener noreferrer">shixiaocaia</a></p><p>Theme&nbsp;<a target="_blank" href="https://github.com/SumiMakito/hexo-theme-typography" rel="noopener noreferrer">Typography</a>&nbsp;by&nbsp;<a target="_blank" href="https://www.keep.moe" rel="noopener noreferrer">Makito</a></p><p>Proudly published with&nbsp;<a target="_blank" href="https://hexo.io" rel="noopener noreferrer">Hexo</a></p></footer></div></div></div></div><script src="/js/jquery-3.1.0.min.js"></script><script src="/js/bootstrap.min.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script><script src="/js/google-analytics.js"></script><script src="/js/typography.js"></script></body></html>

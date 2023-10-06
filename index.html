@@ -3,12 +3,14 @@
 参考文章
 
 Leaf——美团点评分布式ID生成系统
+JavaGuide
+分布式系统-全局唯一ID实现方案
 
 
 背景在复杂分布式系统中，需要对大量的数据和消息进行唯一标识，比如美团点评的金融、支付、餐饮等产品系统，淘宝的订单号…
 单纯的数据库自增ID无法满足需求：
 
-ID冲突问题：在跨数据中心的分布式系统中，由于网络延迟和其他因素，单纯的数据库自增ID很难确保全局唯...</p></div><div class="post-container"><p class="post-title"><a href="/2023/09/03/1-wsl+golang/">WSL中配置golang环境</a></p><p class="post-meta"><span class="date meta-item">Posted at&nbsp;2023-09-03</span><span class="meta-item"><i class="fa fa-tag"></i><span>&nbsp;</span><a class="a-tag" href="/tags/Linux/" title="Linux">Linux</a><span>&nbsp;</span><a class="a-tag" href="/tags/golang/" title="golang">golang</a><span>&nbsp;</span></span></p><p class="post-abstract">配置WSL
+ID冲突问题：在跨数据中心的分布式系统中，由于...</p></div><div class="post-container"><p class="post-title"><a href="/2023/09/03/1-wsl+golang/">WSL中配置golang环境</a></p><p class="post-meta"><span class="date meta-item">Posted at&nbsp;2023-09-03</span><span class="meta-item"><i class="fa fa-tag"></i><span>&nbsp;</span><a class="a-tag" href="/tags/Linux/" title="Linux">Linux</a><span>&nbsp;</span><a class="a-tag" href="/tags/golang/" title="golang">golang</a><span>&nbsp;</span></span></p><p class="post-abstract">配置WSL
 参考文章：WSL安装
 
 切换root用户 
@@ -22,12 +24,36 @@ ID冲突问题：在跨数据中心的分布式系统中，由于网络延迟和
 
  
 
-...</p></div><div class="post-container"><p class="post-title"><a href="/2023/07/12/4-GMP%E6%A8%A1%E5%9E%8B/">Golang | GMP模型</a></p><p class="post-meta"><span class="date meta-item">Posted at&nbsp;2023-07-12</span><span class="meta-item"><i class="fa fa-tag"></i><span>&nbsp;</span><a class="a-tag" href="/tags/golang/" title="golang">golang</a><span>&nbsp;</span></span></p><p class="post-abstract">协程是什么与系统线程区别GMP模型两个goroutine之间如何调度</p></div><div class="post-container"><p class="post-title"><a href="/2023/07/12/5-MQ/">消息队列</a></p><p class="post-meta"><span class="date meta-item">Posted at&nbsp;2023-07-12</span><span class="meta-item"><i class="fa fa-tag"></i><span>&nbsp;</span><a class="a-tag" href="/tags/MQ/" title="MQ">MQ</a><span>&nbsp;</span></span></p><p class="post-abstract"></p></div><div class="post-container"><p class="post-title"><a href="/2023/05/12/3-Bitcask/">Bitcask | 论文阅读</a></p><p class="post-meta"><span class="date meta-item">Posted at&nbsp;2023-05-12</span><span class="meta-item"><i class="fa fa-tag"></i><span>&nbsp;</span><a class="a-tag" href="/tags/是什么/" title="是什么">是什么</a><span>&nbsp;</span></span></p><p class="post-abstract"></p></div><div class="post-container"><p class="post-title"><a href="/2023/05/03/2-ngnix/">Nginx是什么</a></p><p class="post-meta"><span class="date meta-item">Posted at&nbsp;2023-05-03</span><span class="meta-item"><i class="fa fa-tag"></i><span>&nbsp;</span><a class="a-tag" href="/tags/是什么/" title="是什么">是什么</a><span>&nbsp;</span></span></p><p class="post-abstract">正向代理当我们想要探索外面的世界时，使用的魔法，就相当于一个正向代理，将请求发送给代理服务器，代理服务器访问国外网站后将数据转发给我们。
+...</p></div><div class="post-container"><p class="post-title"><a href="/2023/07/12/4-GMP%E6%A8%A1%E5%9E%8B/">Golang | GMP模型</a></p><p class="post-meta"><span class="date meta-item">Posted at&nbsp;2023-07-12</span><span class="meta-item"><i class="fa fa-tag"></i><span>&nbsp;</span><a class="a-tag" href="/tags/golang/" title="golang">golang</a><span>&nbsp;</span></span></p><p class="post-abstract">协程是什么与系统线程区别GMP模型两个goroutine之间如何调度</p></div><div class="post-container"><p class="post-title"><a href="/2023/07/12/5-MQ/">消息队列</a></p><p class="post-meta"><span class="date meta-item">Posted at&nbsp;2023-07-12</span><span class="meta-item"><i class="fa fa-tag"></i><span>&nbsp;</span><a class="a-tag" href="/tags/MQ/" title="MQ">MQ</a><span>&nbsp;</span></span></p><p class="post-abstract"></p></div><div class="post-container"><p class="post-title"><a href="/2023/05/12/3-Bitcask/">Bitcask | 论文阅读</a></p><p class="post-meta"><span class="date meta-item">Posted at&nbsp;2023-05-12</span><span class="meta-item"><i class="fa fa-tag"></i><span>&nbsp;</span><a class="a-tag" href="/tags/是什么/" title="是什么">是什么</a><span>&nbsp;</span></span></p><p class="post-abstract">Bitcask模型背景bitcask 存储模型最初是由一个做分布式存储系统的商业化公司 Riak 提出来的。
+Riak 有很多产品，其中就包括一个分布式 KV 存储系统 Riak KV，他们的分布式 KV 产品具有可插拔的存储引擎，可以独立于整个系统，单独开发和测试新的存储引擎。
+基于此，他们想打造一个全新的存储...</p></div><div class="post-container"><p class="post-title"><a href="/2023/05/03/2-ngnix/">Nginx是什么</a></p><p class="post-meta"><span class="date meta-item">Posted at&nbsp;2023-05-03</span><span class="meta-item"><i class="fa fa-tag"></i><span>&nbsp;</span><a class="a-tag" href="/tags/是什么/" title="是什么">是什么</a><span>&nbsp;</span></span></p><p class="post-abstract">正向代理当我们想要探索外面的世界时，使用的魔法，就相当于一个正向代理，将请求发送给代理服务器，代理服务器访问国外网站后将数据转发给我们。
 正向代理有什么意义：
 
 魔法本质上是一个正向代理，帮助我们探索外面的世界。
 正向代理屏蔽了真实的客户端信息，对外隐藏用户信息，同时可以记录用户访问记录。
-对客户端访问授权，上网...</p></div><div class="post-container"><p class="post-title"><a href="/2023/05/02/0-Hello%20World/">Hello Hexo</a></p><p class="post-meta"><span class="date meta-item">Posted at&nbsp;2023-05-02</span><span class="meta-item"><i class="fa fa-tag"></i><span>&nbsp;</span><a class="a-tag" href="/tags/Hello-world/" title="Hello world">Hello world</a><span>&nbsp;</span></span></p><p class="post-abstract">npm安装前往Node.js官网选择合适版本
+对客户端访问授权，上网...</p></div><div class="post-container"><p class="post-title"><a href="/2023/03/29/7-Git/">Git基本使用</a></p><p class="post-meta"><span class="date meta-item">Posted at&nbsp;2023-03-29</span><span class="meta-item"><i class="fa fa-tag"></i><span>&nbsp;</span><a class="a-tag" href="/tags/是什么/" title="是什么">是什么</a><span>&nbsp;</span></span></p><p class="post-abstract">
+GeekHour Git教程
+
+环境配置 
+
+下载Git，Win&#x2F;Liunx…
+配置用户信息
+
+ 
+
+设置全局代理
+
+ 
+
+配置SSH
+
+ 
+工作区域
+
+workspace：实际操作的目录
+staging area：暂存区，临时存放修改
+local Repository：本地代码，版本信息
+Remot...</p></div><div class="post-container"><p class="post-title"><a href="/2023/02/02/0-Hello%20World/">Hello Hexo</a></p><p class="post-meta"><span class="date meta-item">Posted at&nbsp;2023-02-02</span><span class="meta-item"><i class="fa fa-tag"></i><span>&nbsp;</span><a class="a-tag" href="/tags/Hello-world/" title="Hello world">Hello world</a><span>&nbsp;</span></span></p><p class="post-abstract">npm安装前往Node.js官网选择合适版本
 Hexo环境配置 
 Hexo基本用法 
 修改主题取决于你自己。
