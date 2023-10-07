@@ -24,7 +24,17 @@ ID冲突问题：在跨数据中心的分布式系统中，由于...</p></div><d
 
  
 
-...</p></div><div class="post-container"><p class="post-title"><a href="/2023/07/12/4-GMP%E6%A8%A1%E5%9E%8B/">Golang | GMP模型</a></p><p class="post-meta"><span class="date meta-item">Posted at&nbsp;2023-07-12</span><span class="meta-item"><i class="fa fa-tag"></i><span>&nbsp;</span><a class="a-tag" href="/tags/golang/" title="golang">golang</a><span>&nbsp;</span></span></p><p class="post-abstract">协程是什么与系统线程区别GMP模型两个goroutine之间如何调度</p></div><div class="post-container"><p class="post-title"><a href="/2023/07/12/5-MQ/">消息队列</a></p><p class="post-meta"><span class="date meta-item">Posted at&nbsp;2023-07-12</span><span class="meta-item"><i class="fa fa-tag"></i><span>&nbsp;</span><a class="a-tag" href="/tags/MQ/" title="MQ">MQ</a><span>&nbsp;</span></span></p><p class="post-abstract"></p></div><div class="post-container"><p class="post-title"><a href="/2023/05/12/3-Bitcask/">Bitcask | 论文阅读</a></p><p class="post-meta"><span class="date meta-item">Posted at&nbsp;2023-05-12</span><span class="meta-item"><i class="fa fa-tag"></i><span>&nbsp;</span><a class="a-tag" href="/tags/是什么/" title="是什么">是什么</a><span>&nbsp;</span></span></p><p class="post-abstract">Bitcask模型背景bitcask 存储模型最初是由一个做分布式存储系统的商业化公司 Riak 提出来的。
+...</p></div><div class="post-container"><p class="post-title"><a href="/2023/07/12/4-GMP%E6%A8%A1%E5%9E%8B/">Golang | GMP模型</a></p><p class="post-meta"><span class="date meta-item">Posted at&nbsp;2023-07-12</span><span class="meta-item"><i class="fa fa-tag"></i><span>&nbsp;</span><a class="a-tag" href="/tags/golang/" title="golang">golang</a><span>&nbsp;</span></span></p><p class="post-abstract">
+参考资料
+
+小徐先生的编程世界——Golang GMP 原理
+刘丹冰博客
+
+
+进程、线程、协程进程进程是运行起来的可执行程序，运行一个程序会创建一个或者多个进程。
+
+创建进程，需要分配栈区、文件映射区等空间，所以说进程是资源分配的最小单位
+每个进程有自己的独立地址空间，不与其他进程分享，但是进程间的线程彼此共享...</p></div><div class="post-container"><p class="post-title"><a href="/2023/07/12/5-MQ/">消息队列</a></p><p class="post-meta"><span class="date meta-item">Posted at&nbsp;2023-07-12</span><span class="meta-item"><i class="fa fa-tag"></i><span>&nbsp;</span><a class="a-tag" href="/tags/MQ/" title="MQ">MQ</a><span>&nbsp;</span></span></p><p class="post-abstract"></p></div><div class="post-container"><p class="post-title"><a href="/2023/05/12/3-Bitcask/">Bitcask | 论文阅读</a></p><p class="post-meta"><span class="date meta-item">Posted at&nbsp;2023-05-12</span><span class="meta-item"><i class="fa fa-tag"></i><span>&nbsp;</span><a class="a-tag" href="/tags/是什么/" title="是什么">是什么</a><span>&nbsp;</span></span></p><p class="post-abstract">Bitcask模型背景bitcask 存储模型最初是由一个做分布式存储系统的商业化公司 Riak 提出来的。
 Riak 有很多产品，其中就包括一个分布式 KV 存储系统 Riak KV，他们的分布式 KV 产品具有可插拔的存储引擎，可以独立于整个系统，单独开发和测试新的存储引擎。
 基于此，他们想打造一个全新的存储...</p></div><div class="post-container"><p class="post-title"><a href="/2023/05/03/2-ngnix/">Nginx是什么</a></p><p class="post-meta"><span class="date meta-item">Posted at&nbsp;2023-05-03</span><span class="meta-item"><i class="fa fa-tag"></i><span>&nbsp;</span><a class="a-tag" href="/tags/是什么/" title="是什么">是什么</a><span>&nbsp;</span></span></p><p class="post-abstract">正向代理当我们想要探索外面的世界时，使用的魔法，就相当于一个正向代理，将请求发送给代理服务器，代理服务器访问国外网站后将数据转发给我们。
 正向代理有什么意义：
