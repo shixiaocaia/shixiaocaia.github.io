@@ -6,7 +6,7 @@
   <link href="https://shixiaocaia.github.io/atom.xml" rel="self"/>
   
   <link href="https://shixiaocaia.github.io/"/>
-  <updated>2023-10-13T01:45:19.123Z</updated>
+  <updated>2023-10-13T02:18:25.066Z</updated>
   <id>https://shixiaocaia.github.io/</id>
   
   <author>
@@ -17,41 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Golang | 内存模型与分配机制</title>
-    <link href="https://shixiaocaia.github.io/2023/10/12/9-%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/"/>
-    <id>https://shixiaocaia.github.io/2023/10/12/9-%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/</id>
-    <published>2023-10-12T12:25:20.000Z</published>
-    <updated>2023-10-13T01:45:19.123Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;参考文章：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;a href=&quot;https://space.bilibili.com/567195437&quot;&gt;幼麟实验室&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/blockquote&gt;
-&lt;h2</summary>
-        
-      
-    
-    
-    
-    
-    <category term="golang" scheme="https://shixiaocaia.github.io/tags/golang/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Bitcask | 实现细节</title>
-    <link href="https://shixiaocaia.github.io/2023/10/08/8-Bitcask-1-md/"/>
-    <id>https://shixiaocaia.github.io/2023/10/08/8-Bitcask-1-md/</id>
+    <link href="https://shixiaocaia.github.io/2023/10/08/8-Bitcask-1/"/>
+    <id>https://shixiaocaia.github.io/2023/10/08/8-Bitcask-1/</id>
     <published>2023-10-08T13:55:27.000Z</published>
-    <updated>2023-10-08T14:34:36.157Z</updated>
+    <updated>2023-10-13T02:18:25.066Z</updated>
     
     
       
@@ -123,21 +93,6 @@
   </entry>
   
   <entry>
-    <title>消息队列</title>
-    <link href="https://shixiaocaia.github.io/2023/07/12/5-MQ/"/>
-    <id>https://shixiaocaia.github.io/2023/07/12/5-MQ/</id>
-    <published>2023-07-12T08:07:22.000Z</published>
-    <updated>2023-09-23T08:24:16.298Z</updated>
-    
-    
-    
-    
-    
-    <category term="MQ" scheme="https://shixiaocaia.github.io/tags/MQ/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Golang | GMP模型</title>
     <link href="https://shixiaocaia.github.io/2023/07/12/4-GMP%E6%A8%A1%E5%9E%8B/"/>
     <id>https://shixiaocaia.github.io/2023/07/12/4-GMP%E6%A8%A1%E5%9E%8B/</id>
@@ -153,6 +108,82 @@
 &lt;p&gt;参考资料&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;a href=&quot;https://mp.weixin.qq.com/s/jIWe3nMP6yiuXeBQgmePDg&quot;&gt;小徐先生的编程世界——Golang GMP 原理&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    
+    <category term="golang" scheme="https://shixiaocaia.github.io/tags/golang/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>消息队列</title>
+    <link href="https://shixiaocaia.github.io/2023/07/12/5-MQ/"/>
+    <id>https://shixiaocaia.github.io/2023/07/12/5-MQ/</id>
+    <published>2023-07-12T08:07:22.000Z</published>
+    <updated>2023-10-13T02:44:49.717Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;Redis中实现消息队列&quot;&gt;&lt;a href=&quot;#Redis中实现消息队列&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="MQ" scheme="https://shixiaocaia.github.io/tags/MQ/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Golang | 垃圾回收机制</title>
+    <link href="https://shixiaocaia.github.io/2023/06/13/10-GC/"/>
+    <id>https://shixiaocaia.github.io/2023/06/13/10-GC/</id>
+    <published>2023-06-13T02:44:13.000Z</published>
+    <updated>2023-10-13T07:26:22.069Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;参考文章：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    
+    <category term="golang" scheme="https://shixiaocaia.github.io/tags/golang/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Golang | 内存模型与分配机制</title>
+    <link href="https://shixiaocaia.github.io/2023/06/12/9-%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/"/>
+    <id>https://shixiaocaia.github.io/2023/06/12/9-%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/</id>
+    <published>2023-06-12T12:25:20.000Z</published>
+    <updated>2023-10-13T07:05:42.346Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;参考文章：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;https://space.bilibili.com/567195437&quot;&gt;幼麟实验室&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a</summary>
         
       
@@ -215,7 +246,7 @@
     <link href="https://shixiaocaia.github.io/2023/03/29/7-Git/"/>
     <id>https://shixiaocaia.github.io/2023/03/29/7-Git/</id>
     <published>2023-03-29T08:07:22.000Z</published>
-    <updated>2023-10-08T02:09:02.965Z</updated>
+    <updated>2023-10-13T02:36:07.301Z</updated>
     
     
       
@@ -223,6 +254,7 @@
         
         
     <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;参考文章&lt;/p&gt;
 &lt;p&gt;&lt;a</summary>
         
       
@@ -239,7 +271,7 @@
     <link href="https://shixiaocaia.github.io/2023/02/02/0-Hello%20World/"/>
     <id>https://shixiaocaia.github.io/2023/02/02/0-Hello%20World/</id>
     <published>2023-02-02T08:59:19.000Z</published>
-    <updated>2023-10-06T00:23:01.528Z</updated>
+    <updated>2023-10-13T02:36:16.505Z</updated>
     
     
       
