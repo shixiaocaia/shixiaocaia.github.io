@@ -11,7 +11,7 @@
   
   <title>
     
-      WSL中配置golang环境 
+      archive_a: 2023/4 
       
       
       |
@@ -100,240 +100,131 @@
 
 
       <div class="flex-container">
-        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
-<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
+        <!-- 归档页，展示本站所有文章，按照年份降序归类，url形式：https://yoursite/archives/ -->
 
+<!-- last: 按年份把文章分组，当前遍历到的年份 -->
+<!-- now: 当前遍历到的文章的发布年份 -->
 
-  <!-- LaTex Display -->
-
-  
-    <script async type="text/javascript" src="/plugins/mathjax/tex-chtml.js"></script>
-  
-  <script>
-    MathJax = {
-      tex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']]
-      }
-    }
-  </script>
-
-
-
-
-
-  <!-- clipboard -->
-
-  
-    <script async type="text/javascript" src="/plugins/clipboard.min.js"></script>
-  
-  
-<script src="/js/codeCopy.js"></script>
-
-
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
-  <div class="container post-details" id="post-details">
-    <div class="post-content">
-      <div class="post-title">WSL中配置golang环境</div>
-      <div class="post-attach">
-        <span class="post-pubtime">
-          <i class="iconfont icon-updatetime mr-10" title="Update time"></i>
-          2023-10-15 10:57:22
-        </span>
-        
-      </div>
-      <div class="markdown-body">
-        <h2 id="配置WSL"><a href="#配置WSL" class="headerlink" title="配置WSL"></a>配置WSL</h2><blockquote>
-<p>参考文章：<a target="_blank" rel="noopener" href="https://deepinout.com/wsl-tutorials/wsl-install-and-quick-start.html">WSL安装</a></p>
-</blockquote>
-<h3 id="切换root用户"><a href="#切换root用户" class="headerlink" title="切换root用户"></a>切换root用户</h3><pre class="line-numbers language-shell"><code class="language-shell">sudo passwd root
-su
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h3 id="限制Vmmem内存"><a href="#限制Vmmem内存" class="headerlink" title="限制Vmmem内存"></a>限制Vmmem内存</h3><ol>
-<li><p>按下<code>Windows + R</code>键，输入<code>%UserProfile%</code>并运行进入用户文件夹</p>
-</li>
-<li><p>新建文件<code>.wslconfig</code>，然后记事本编辑</p>
-</li>
-<li><p>填入以下内容并保存, memory为系统内存上限，这里我限制最大2GB，可根据自身电脑配置设置</p>
-</li>
-</ol>
-<pre class="line-numbers language-shell"><code class="language-shell">[wsl2]
-memory=4GB
-swap=8GB
-localhostForwarding=true
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<ol start="4">
-<li>输入<code>wsl --shutdown</code>来关闭当前的子系统，重启wsl</li>
-</ol>
-<h3 id="使用docker"><a href="#使用docker" class="headerlink" title="使用docker"></a>使用docker</h3><pre class="line-numbers language-shell"><code class="language-shell"> curl -fsSL https://test.docker.com -o test-docker.sh
- sudo sh test-docker.sh
- 
- # 验证docker是否安装成功
- systemctl status docker
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-shell"><code class="language-shell"># 启动docker
-systemctl start docker
-
-# 查看当前的容器
-
-docker ps -a
-
-# 启动容器
-docker  start 容器名或者容器id
-
-# 停止容器
-docker  stop 容器名或容器id
-
-
-# 强制关闭容器
-docker container kill 容器名或容器id
-# 或可简写为
-docker kill 容器名或容器id
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="配置Git"><a href="#配置Git" class="headerlink" title="配置Git"></a>配置Git</h3><pre class="line-numbers language-shell"><code class="language-shell">$ apt-get install libcurl4-gnutls-dev libexpat1-dev gettext \
-  libz-dev libssl-dev
-
-$ apt-get install git
-
-$ git --version
-git version 1.8.1.2
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-shell"><code class="language-shell"># 配置用户信息
-git config --global user.name "shixiaocaia"​
-git config --global user.email shixiaocaia@gmail.com​
-git config --list
-
-# 配置SSH
-ssh-keygen -t rsa -C "这里换上你的邮箱"
-# 不需要密码，直接三次回车
-# 生成id_rsa和id_rsa.pub
-# 添加公钥pub文件内容，到Settings -- SSH and GPG keys​
-cat ~/.ssh/id_rsa.pub
-# 测试配置成功
-ssh -T git@github.com
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="自动安装"><a href="#自动安装" class="headerlink" title="自动安装"></a>自动安装</h2><pre class="line-numbers language-shell"><code class="language-shell">sudo apt install golang-go
-apt remove golang-go
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>用这样的办法自动安装的golang并非最新版</p>
-<h2 id="手动安装"><a href="#手动安装" class="headerlink" title="手动安装"></a>手动安装</h2><ol>
-<li>查看<a target="_blank" rel="noopener" href="https://golang.google.cn/dl/">google发布的golang版本</a>，选择合适的版本安装。</li>
-</ol>
-<pre class="line-numbers language-shell"><code class="language-shell">wget https://studygolang.com/dl/golang/go1.20.5.linux-amd64.tar.gz
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<ol start="2">
-<li>解压到<code>/usr/local</code></li>
-</ol>
-<pre class="line-numbers language-shell"><code class="language-shell">tar -C /usr/local -xzf go1.20.5.linux-amd64.tar.gz
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<ol start="3">
-<li>设置环境变量</li>
-</ol>
-<pre class="line-numbers language-shell"><code class="language-shell">vim /etc/profile
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<pre class="line-numbers language-shell"><code class="language-shell">export GOPATH=/home/xiaocai/go
-export GOROOT=/usr/local/go
-export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-shell"><code class="language-shell">source /etc/profile
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<ol start="4">
-<li>其他设置</li>
-</ol>
-<pre class="line-numbers language-shell"><code class="language-shell"># 配置代理
-go env  -w GOPROXY=https://goproxy.cn,https://goproxy.io,direct
-
-# Go Moudle
-go env -w GO111MODULE=on
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<ol start="5">
-<li>查看环境是否安装成功</li>
-</ol>
-<pre class="line-numbers language-shell"><code class="language-shell">go env
-go version
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h2 id="golang配置"><a href="#golang配置" class="headerlink" title="golang配置"></a>golang配置</h2><p><img src="/../images/go1.png" alt="20230907102715106"></p>
-<ul>
-<li><p>添加语言运行时</p>
-</li>
-<li><p>使用<code>whereis go</code>，得到<code>go: /usr/local/go /usr/local/go/bin/go /mnt/d/Go/bin/go.exe</code></p>
-<ul>
-<li><p>第一个参数是go sdk文件夹</p>
-</li>
-<li><p>第二个参数<code>/usr/local/go/bin/go</code>对应Go可执行文件参数</p>
-</li>
-<li><p>第三个是Windows10里面的go环境映射到了wsl2</p>
-</li>
-</ul>
-</li>
-</ul>
-<p><img src="/../images/go2.png" alt="20230907102932244"></p>
-<ul>
-<li>运行&#x2F;调试配置更改</li>
-</ul>
-
-      </div>
-      
-        <div class="prev-or-next">
-          <div class="post-foot-next">
-            
-              <a href="/2023/07/12/5-MQ/" target="_self">
-                <i class="iconfont icon-chevronleft"></i>
-                <span>Prev</span>
-              </a>
-            
-          </div>
-          <div class="post-attach">
-            <span class="post-pubtime">
-              <i class="iconfont icon-updatetime mr-10" title="Update time"></i>
-              2023-10-15 10:57:22
-            </span>
-            
-          </div>
-          <div class="post-foot-prev">
-            
-              <a href="/2023/09/12/6-%E5%88%86%E5%B8%83%E5%BC%8FID/" target="_self">
-                <span>Next</span>
-                <i class="iconfont icon-chevronright"></i>
-              </a>
-            
-          </div>
+<div class="container archives">
+  <div class="post-list">
+    
+        <!-- 后续文章的发布年份呈现 -->
+        <div class="content-title">
+          <h2>
+            <span>2023</span>
+          </h2>
         </div>
       
-    </div>
+      <div class="post-item" title="Bitcask | 实现细节">
+        <div class="time-m-d">10-08</div>
+        <div class="title">
+          <a href="/2023/10/08/8-Bitcask-1/">
+            <span>Bitcask | 实现细节</span>
+          </a>
+        </div>
+      </div>
     
-  <div id="btn-catalog" class="btn-catalog">
-    <i class="iconfont icon-catalog"></i>
-  </div>
-  <div class="post-catalog hidden" id="catalog">
-    <div class="title">Contents</div>
-    <div class="catalog-content">
-      
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEWSL"><span class="toc-text">配置WSL</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%87%E6%8D%A2root%E7%94%A8%E6%88%B7"><span class="toc-text">切换root用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%99%90%E5%88%B6Vmmem%E5%86%85%E5%AD%98"><span class="toc-text">限制Vmmem内存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8docker"><span class="toc-text">使用docker</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEGit"><span class="toc-text">配置Git</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E5%AE%89%E8%A3%85"><span class="toc-text">自动安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%8B%E5%8A%A8%E5%AE%89%E8%A3%85"><span class="toc-text">手动安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#golang%E9%85%8D%E7%BD%AE"><span class="toc-text">golang配置</span></a></li></ol>
-      
-    </div>
-  </div>
-
-  
-<script src="/js/catalog.js"></script>
-
-
-
-
+      <div class="post-item" title="分布式场景 | 全局ID生成">
+        <div class="time-m-d">09-12</div>
+        <div class="title">
+          <a href="/2023/09/12/6-%E5%88%86%E5%B8%83%E5%BC%8FID/">
+            <span>分布式场景 | 全局ID生成</span>
+          </a>
+        </div>
+      </div>
+    
+      <div class="post-item" title="WSL中配置golang环境">
+        <div class="time-m-d">09-03</div>
+        <div class="title">
+          <a href="/2023/09/03/1-wsl+golang/">
+            <span>WSL中配置golang环境</span>
+          </a>
+        </div>
+      </div>
+    
+      <div class="post-item" title="消息队列">
+        <div class="time-m-d">07-12</div>
+        <div class="title">
+          <a href="/2023/07/12/5-MQ/">
+            <span>消息队列</span>
+          </a>
+        </div>
+      </div>
+    
+      <div class="post-item" title="Golang | GMP模型">
+        <div class="time-m-d">07-12</div>
+        <div class="title">
+          <a href="/2023/07/12/4-GMP%E6%A8%A1%E5%9E%8B/">
+            <span>Golang | GMP模型</span>
+          </a>
+        </div>
+      </div>
+    
+      <div class="post-item" title="Golang | 垃圾回收机制">
+        <div class="time-m-d">06-13</div>
+        <div class="title">
+          <a href="/2023/06/13/10-GC/">
+            <span>Golang | 垃圾回收机制</span>
+          </a>
+        </div>
+      </div>
+    
+      <div class="post-item" title="Golang | 内存模型与分配机制">
+        <div class="time-m-d">06-12</div>
+        <div class="title">
+          <a href="/2023/06/12/9-%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/">
+            <span>Golang | 内存模型与分配机制</span>
+          </a>
+        </div>
+      </div>
+    
+      <div class="post-item" title="Bitcask | 论文阅读">
+        <div class="time-m-d">05-12</div>
+        <div class="title">
+          <a href="/2023/05/12/3-Bitcask/">
+            <span>Bitcask | 论文阅读</span>
+          </a>
+        </div>
+      </div>
+    
+      <div class="post-item" title="Nginx是什么">
+        <div class="time-m-d">05-03</div>
+        <div class="title">
+          <a href="/2023/05/03/2-ngnix/">
+            <span>Nginx是什么</span>
+          </a>
+        </div>
+      </div>
+    
+      <div class="post-item" title="操作系统 | 进程间通信">
+        <div class="time-m-d">04-15</div>
+        <div class="title">
+          <a href="/2023/04/15/11-%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1/">
+            <span>操作系统 | 进程间通信</span>
+          </a>
+        </div>
+      </div>
+    
+      <div class="post-item" title="Git基本使用">
+        <div class="time-m-d">03-29</div>
+        <div class="title">
+          <a href="/2023/03/29/7-Git/">
+            <span>Git基本使用</span>
+          </a>
+        </div>
+      </div>
+    
+      <div class="post-item" title="Hello Hexo">
+        <div class="time-m-d">02-02</div>
+        <div class="title">
+          <a href="/2023/02/02/0-Hello%20World/">
+            <span>Hello Hexo</span>
+          </a>
+        </div>
+      </div>
     
   </div>
-
+</div>
 
         
 <div class="footer">

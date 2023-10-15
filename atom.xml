@@ -71,7 +71,7 @@
     <link href="https://shixiaocaia.github.io/2023/09/03/1-wsl+golang/"/>
     <id>https://shixiaocaia.github.io/2023/09/03/1-wsl+golang/</id>
     <published>2023-09-03T08:07:22.000Z</published>
-    <updated>2023-10-06T00:23:01.528Z</updated>
+    <updated>2023-10-15T02:57:22.226Z</updated>
     
     
       
@@ -87,33 +87,6 @@
     
     
     <category term="Linux" scheme="https://shixiaocaia.github.io/tags/Linux/"/>
-    
-    <category term="golang" scheme="https://shixiaocaia.github.io/tags/golang/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Golang | GMP模型</title>
-    <link href="https://shixiaocaia.github.io/2023/07/12/4-GMP%E6%A8%A1%E5%9E%8B/"/>
-    <id>https://shixiaocaia.github.io/2023/07/12/4-GMP%E6%A8%A1%E5%9E%8B/</id>
-    <published>2023-07-12T08:07:22.000Z</published>
-    <updated>2023-10-07T01:20:19.073Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;参考资料&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;a href=&quot;https://mp.weixin.qq.com/s/jIWe3nMP6yiuXeBQgmePDg&quot;&gt;小徐先生的编程世界——Golang GMP 原理&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a</summary>
-        
-      
-    
-    
-    
     
     <category term="golang" scheme="https://shixiaocaia.github.io/tags/golang/"/>
     
@@ -143,11 +116,38 @@
   </entry>
   
   <entry>
+    <title>Golang | GMP模型</title>
+    <link href="https://shixiaocaia.github.io/2023/07/12/4-GMP%E6%A8%A1%E5%9E%8B/"/>
+    <id>https://shixiaocaia.github.io/2023/07/12/4-GMP%E6%A8%A1%E5%9E%8B/</id>
+    <published>2023-07-12T08:07:22.000Z</published>
+    <updated>2023-10-15T02:55:24.116Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;参考资料&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;https://mp.weixin.qq.com/s/jIWe3nMP6yiuXeBQgmePDg&quot;&gt;小徐先生的编程世界——Golang GMP 原理&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    
+    <category term="golang" scheme="https://shixiaocaia.github.io/tags/golang/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Golang | 垃圾回收机制</title>
     <link href="https://shixiaocaia.github.io/2023/06/13/10-GC/"/>
     <id>https://shixiaocaia.github.io/2023/06/13/10-GC/</id>
     <published>2023-06-13T02:44:13.000Z</published>
-    <updated>2023-10-13T07:26:22.069Z</updated>
+    <updated>2023-10-14T01:05:17.554Z</updated>
     
     
       
@@ -200,7 +200,7 @@
     <link href="https://shixiaocaia.github.io/2023/05/12/3-Bitcask/"/>
     <id>https://shixiaocaia.github.io/2023/05/12/3-Bitcask/</id>
     <published>2023-05-12T08:07:22.000Z</published>
-    <updated>2023-10-05T02:54:49.193Z</updated>
+    <updated>2023-10-15T02:54:37.450Z</updated>
     
     
       
@@ -242,11 +242,38 @@
   </entry>
   
   <entry>
+    <title>操作系统 | 进程间通信</title>
+    <link href="https://shixiaocaia.github.io/2023/04/15/11-%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1/"/>
+    <id>https://shixiaocaia.github.io/2023/04/15/11-%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1/</id>
+    <published>2023-04-15T01:38:01.000Z</published>
+    <updated>2023-10-15T02:59:54.261Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;参考文章：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;https://xiaolincoding.com/os/4_process/process_commu.html&quot;&gt;小林coding&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    
+    <category term="操作系统" scheme="https://shixiaocaia.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Git基本使用</title>
     <link href="https://shixiaocaia.github.io/2023/03/29/7-Git/"/>
     <id>https://shixiaocaia.github.io/2023/03/29/7-Git/</id>
     <published>2023-03-29T08:07:22.000Z</published>
-    <updated>2023-10-13T02:36:07.301Z</updated>
+    <updated>2023-10-15T02:56:48.146Z</updated>
     
     
       
