@@ -58,9 +58,8 @@
       document.documentElement.setAttribute('color-mode', colorMode)
     }
   </script>
-<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="shixiaocaia" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+<meta name="generator" content="Hexo 6.3.0"><link rel="stylesheet" href="/css/prism.css" type="text/css"><link rel="alternate" href="/atom.xml" title="shixiaocaia" type="application/atom+xml">
+</head>
 
 
   <body>
@@ -270,13 +269,13 @@
 <p>但是这又带来相应问题问题：<strong>水平扩展比较困难</strong>，前面提到步长和机器数相等，在初期已经定好步长和机器数后，添加机器要麻烦的多。需要先将扩展的机器设置在之前机器生成的ID范围之后，保证生成id唯一性，然后调整之前的机器到定义的号码段，当机器数量大时，扩容十分困难。</p>
 <p>同时<strong>ID没有了单调递增</strong>的特性，只能趋势增加，每次获取ID读写数据库，数据库压力大时，只能靠堆机器来提高性能。</p>
 <h2 id="Redis实现"><a href="#Redis实现" class="headerlink" title="Redis实现"></a>Redis实现</h2><p>Redis实现分布式唯一ID主要是通过提供像 <code>INCR</code> 和 <code>INCRBY</code> 这样的自增原子命令，由于Redis自身的单线程的特点所以能保证生成的 ID 肯定是唯一有序的。</p>
-<pre class="line-numbers language-shell"><code class="language-shell">127.0.0.1:6379> set sequence_id_biz_type 1
+<pre class=" language-shell"><code class="language-shell">127.0.0.1:6379> set sequence_id_biz_type 1
 OK
 127.0.0.1:6379> incr sequence_id_biz_type
 (integer) 2
 127.0.0.1:6379> get sequence_id_biz_type
 "2"
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</code></pre>
 <p>当采用集群方式获取高吞吐量时，像MySQL方式一样，设置每台Redis值不同的初始值和偏移值，当时引入的成本极大。</p>
 <p>同时Redis是基于内存的，需要持久化数据，避免重启机器或者机器故障后数据丢失。Redis主要通过AOF和RDB实现持久化。</p>
 <p>优点：性能高，生成的数据有序递增</p>

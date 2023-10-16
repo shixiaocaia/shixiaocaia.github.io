@@ -58,9 +58,8 @@
       document.documentElement.setAttribute('color-mode', colorMode)
     }
   </script>
-<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="shixiaocaia" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+<meta name="generator" content="Hexo 6.3.0"><link rel="stylesheet" href="/css/prism.css" type="text/css"><link rel="alternate" href="/atom.xml" title="shixiaocaia" type="application/atom+xml">
+</head>
 
 
   <body>
@@ -157,9 +156,9 @@
         <h2 id="配置WSL"><a href="#配置WSL" class="headerlink" title="配置WSL"></a>配置WSL</h2><blockquote>
 <p>参考文章：<a target="_blank" rel="noopener" href="https://deepinout.com/wsl-tutorials/wsl-install-and-quick-start.html">WSL安装</a></p>
 </blockquote>
-<h3 id="切换root用户"><a href="#切换root用户" class="headerlink" title="切换root用户"></a>切换root用户</h3><pre class="line-numbers language-shell"><code class="language-shell">sudo passwd root
+<h3 id="切换root用户"><a href="#切换root用户" class="headerlink" title="切换root用户"></a>切换root用户</h3><pre class=" language-shell"><code class="language-shell">sudo passwd root
 su
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</code></pre>
 <h3 id="限制Vmmem内存"><a href="#限制Vmmem内存" class="headerlink" title="限制Vmmem内存"></a>限制Vmmem内存</h3><ol>
 <li><p>按下<code>Windows + R</code>键，输入<code>%UserProfile%</code>并运行进入用户文件夹</p>
 </li>
@@ -168,21 +167,21 @@ su
 <li><p>填入以下内容并保存, memory为系统内存上限，这里我限制最大2GB，可根据自身电脑配置设置</p>
 </li>
 </ol>
-<pre class="line-numbers language-shell"><code class="language-shell">[wsl2]
+<pre class=" language-shell"><code class="language-shell">[wsl2]
 memory=4GB
 swap=8GB
 localhostForwarding=true
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+</code></pre>
 <ol start="4">
 <li>输入<code>wsl --shutdown</code>来关闭当前的子系统，重启wsl</li>
 </ol>
-<h3 id="使用docker"><a href="#使用docker" class="headerlink" title="使用docker"></a>使用docker</h3><pre class="line-numbers language-shell"><code class="language-shell"> curl -fsSL https://test.docker.com -o test-docker.sh
+<h3 id="使用docker"><a href="#使用docker" class="headerlink" title="使用docker"></a>使用docker</h3><pre class=" language-shell"><code class="language-shell"> curl -fsSL https://test.docker.com -o test-docker.sh
  sudo sh test-docker.sh
  
  # 验证docker是否安装成功
  systemctl status docker
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-shell"><code class="language-shell"># 启动docker
+</code></pre>
+<pre class=" language-shell"><code class="language-shell"># 启动docker
 systemctl start docker
 
 # 查看当前的容器
@@ -200,16 +199,16 @@ docker  stop 容器名或容器id
 docker container kill 容器名或容器id
 # 或可简写为
 docker kill 容器名或容器id
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="配置Git"><a href="#配置Git" class="headerlink" title="配置Git"></a>配置Git</h3><pre class="line-numbers language-shell"><code class="language-shell">$ apt-get install libcurl4-gnutls-dev libexpat1-dev gettext \
+</code></pre>
+<h3 id="配置Git"><a href="#配置Git" class="headerlink" title="配置Git"></a>配置Git</h3><pre class=" language-shell"><code class="language-shell">$ apt-get install libcurl4-gnutls-dev libexpat1-dev gettext \
   libz-dev libssl-dev
 
 $ apt-get install git
 
 $ git --version
 git version 1.8.1.2
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-shell"><code class="language-shell"># 配置用户信息
+</code></pre>
+<pre class=" language-shell"><code class="language-shell"># 配置用户信息
 git config --global user.name "shixiaocaia"​
 git config --global user.email shixiaocaia@gmail.com​
 git config --list
@@ -222,47 +221,47 @@ ssh-keygen -t rsa -C "这里换上你的邮箱"
 cat ~/.ssh/id_rsa.pub
 # 测试配置成功
 ssh -T git@github.com
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="自动安装"><a href="#自动安装" class="headerlink" title="自动安装"></a>自动安装</h2><pre class="line-numbers language-shell"><code class="language-shell">sudo apt install golang-go
+</code></pre>
+<h2 id="自动安装"><a href="#自动安装" class="headerlink" title="自动安装"></a>自动安装</h2><pre class=" language-shell"><code class="language-shell">sudo apt install golang-go
 apt remove golang-go
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</code></pre>
 <p>用这样的办法自动安装的golang并非最新版</p>
 <h2 id="手动安装"><a href="#手动安装" class="headerlink" title="手动安装"></a>手动安装</h2><ol>
 <li>查看<a target="_blank" rel="noopener" href="https://golang.google.cn/dl/">google发布的golang版本</a>，选择合适的版本安装。</li>
 </ol>
-<pre class="line-numbers language-shell"><code class="language-shell">wget https://studygolang.com/dl/golang/go1.20.5.linux-amd64.tar.gz
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class=" language-shell"><code class="language-shell">wget https://studygolang.com/dl/golang/go1.20.5.linux-amd64.tar.gz
+</code></pre>
 <ol start="2">
 <li>解压到<code>/usr/local</code></li>
 </ol>
-<pre class="line-numbers language-shell"><code class="language-shell">tar -C /usr/local -xzf go1.20.5.linux-amd64.tar.gz
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class=" language-shell"><code class="language-shell">tar -C /usr/local -xzf go1.20.5.linux-amd64.tar.gz
+</code></pre>
 <ol start="3">
 <li>设置环境变量</li>
 </ol>
-<pre class="line-numbers language-shell"><code class="language-shell">vim /etc/profile
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<pre class="line-numbers language-shell"><code class="language-shell">export GOPATH=/home/xiaocai/go
+<pre class=" language-shell"><code class="language-shell">vim /etc/profile
+</code></pre>
+<pre class=" language-shell"><code class="language-shell">export GOPATH=/home/xiaocai/go
 export GOROOT=/usr/local/go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-shell"><code class="language-shell">source /etc/profile
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</code></pre>
+<pre class=" language-shell"><code class="language-shell">source /etc/profile
+</code></pre>
 <ol start="4">
 <li>其他设置</li>
 </ol>
-<pre class="line-numbers language-shell"><code class="language-shell"># 配置代理
+<pre class=" language-shell"><code class="language-shell"># 配置代理
 go env  -w GOPROXY=https://goproxy.cn,https://goproxy.io,direct
 
 # Go Moudle
 go env -w GO111MODULE=on
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</code></pre>
 <ol start="5">
 <li>查看环境是否安装成功</li>
 </ol>
-<pre class="line-numbers language-shell"><code class="language-shell">go env
+<pre class=" language-shell"><code class="language-shell">go env
 go version
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</code></pre>
 <h2 id="golang配置"><a href="#golang配置" class="headerlink" title="golang配置"></a>golang配置</h2><p><img src="/../images/go1.png" alt="20230907102715106"></p>
 <ul>
 <li><p>添加语言运行时</p>

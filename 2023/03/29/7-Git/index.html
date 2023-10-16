@@ -58,9 +58,8 @@
       document.documentElement.setAttribute('color-mode', colorMode)
     }
   </script>
-<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="shixiaocaia" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+<meta name="generator" content="Hexo 6.3.0"><link rel="stylesheet" href="/css/prism.css" type="text/css"><link rel="alternate" href="/atom.xml" title="shixiaocaia" type="application/atom+xml">
+</head>
 
 
   <body>
@@ -158,7 +157,7 @@
 <p>参考文章</p>
 <p><a target="_blank" rel="noopener" href="https://www.bilibili.com/list/watchlater?oid=528356813&bvid=BV1HM411377j&spm_id_from=..top_right_bar_window_view_later.content.click&p=9">GeekHour Git教程</a></p>
 </blockquote>
-<h2 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h2><pre class="line-numbers language-shell"><code class="language-shell"># 配置SSH
+<h2 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h2><pre class=" language-shell"><code class="language-shell"># 配置SSH
 ssh-keygen -t rsa -C "这里换上你的邮箱"
 # 不需要密码，直接三次回车
 # 生成id_rsa和id_rsa.pub
@@ -181,26 +180,26 @@ Hi shixiaocaia! You've successfully authenticated, but GitHub does not provide s
 ssh -T git@github.com 
 
 # Hi shixiaocaia! You've successfully authenticated, but GitHub does not provide shell access.
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</code></pre>
 <ol>
 <li>下载Git，Win&#x2F;Liunx…</li>
 <li>配置用户信息</li>
 </ol>
-<pre class="line-numbers language-shell"><code class="language-shell"># 配置用户信息
+<pre class=" language-shell"><code class="language-shell"># 配置用户信息
 git config --global user.name "shixiaocaia"
 git config --global user.email shixiaocaia@gmail.com
 git config --list
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+</code></pre>
 <ol start="3">
 <li>设置全局代理</li>
 </ol>
-<pre class="line-numbers language-shell"><code class="language-shell">git config --global http.proxy socks5://127.0.0.1:10808
+<pre class=" language-shell"><code class="language-shell">git config --global http.proxy socks5://127.0.0.1:10808
 git config --global https.proxy socks5://127.0.0.1:10808
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</code></pre>
 <ol start="4">
 <li>配置SSH</li>
 </ol>
-<pre class="line-numbers language-shell"><code class="language-shell">ssh-keygen -t rsa -C "这里换上你的邮箱"
+<pre class=" language-shell"><code class="language-shell">ssh-keygen -t rsa -C "这里换上你的邮箱"
 # 不需要密码，直接三次回车
 # 生成id_rsa和id_rsa.pub
 # 添加公钥pub文件内容，到Settings -- SSH and GPG keys
@@ -223,7 +222,7 @@ Hi shixiaocaia! You've successfully authenticated, but GitHub does not provide s
 ssh -T git@github.com 
 
 # Hi shixiaocaia! You've successfully authenticated, but GitHub does not provide shell access.
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</code></pre>
 <h2 id="工作区域"><a href="#工作区域" class="headerlink" title="工作区域"></a>工作区域</h2><p><img src="/../images/git-1.png" alt="0bc63cb7-4c90-4680-8749-9091a262b19c"><br><img src="/../images/git-2.png" alt="6f8f53a3-1bf8-499a-967f-28758e0993ec"></p>
 <ul>
 <li>workspace：实际操作的目录</li>
@@ -259,7 +258,7 @@ ssh -T git@github.com
 </ul>
 </li>
 </ul>
-<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><h3 id="init"><a href="#init" class="headerlink" title="init"></a>init</h3><pre class="line-numbers language-shell"><code class="language-shell">git init
+<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><h3 id="init"><a href="#init" class="headerlink" title="init"></a>init</h3><pre class=" language-shell"><code class="language-shell">git init
 
 git remote add origin url / ssh
 # 使用ssh连接不需要登陆验证
@@ -267,13 +266,13 @@ git remote add origin url / ssh
 git pull -u origin main
 # 拉取origin的main分支到本地main分支
 # -u 将远程仓库和本地仓库关联起来
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</code></pre>
 <ul>
 <li>如果使用git clone同步项目到本地，而上述更多是从直接将本地文件夹与远端仓库建立连接</li>
 <li>初始化后的.git文件夹，通过<code>ls -a</code>显示，包含了仓库的信息，一般隐藏避免删除</li>
 <li><code>git remote -v</code>获取远程仓库信息</li>
 </ul>
-<h3 id="branch"><a href="#branch" class="headerlink" title="branch"></a>branch</h3><pre class="line-numbers language-shell"><code class="language-shell"># 查看本地分支
+<h3 id="branch"><a href="#branch" class="headerlink" title="branch"></a>branch</h3><pre class=" language-shell"><code class="language-shell"># 查看本地分支
 git branch
 # 查看远程分支
 git branch -r
@@ -299,14 +298,14 @@ git branch origin :remote_branch_name
 
 # 查看分支属于哪部分拉出来的
 git reflog --date=local | grep <branchname> 
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="pull"><a href="#pull" class="headerlink" title="pull"></a>pull</h3><pre class="line-numbers language-shell"><code class="language-shell"># 拉取最新的origin代码
+</code></pre>
+<h3 id="pull"><a href="#pull" class="headerlink" title="pull"></a>pull</h3><pre class=" language-shell"><code class="language-shell"># 拉取最新的origin代码
 git fetch origin 
 
 # 基于某个远程分支创建新的本地分支
 git checkout -b main origin/main
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="push"><a href="#push" class="headerlink" title="push"></a>push</h3><pre class="line-numbers language-shell"><code class="language-shell"># 拉取最新远程代码到本地
+</code></pre>
+<h3 id="push"><a href="#push" class="headerlink" title="push"></a>push</h3><pre class=" language-shell"><code class="language-shell"># 拉取最新远程代码到本地
 git fetch
 
 # 合并最新代码
@@ -315,19 +314,19 @@ git merge origin/main
 # git pull = git fetch & git merge origin main
 git pull <远程主机名> <远程分支名>:<本地分支名>
 # 一般本地分支名和远程分支名相同时，合并分支名
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</code></pre>
 <ul>
 <li>在不同分支下开发，不需要先merge主分支的内容，通过提交PR，完成和主分支的合并</li>
 <li>当开发新功能，从主分支拉取，过程中可能也会pull最新代码</li>
 </ul>
-<h3 id="gitignore"><a href="#gitignore" class="headerlink" title="gitignore"></a>gitignore</h3><pre class="line-numbers language-shell"><code class="language-shell">touch .gitignore
+<h3 id="gitignore"><a href="#gitignore" class="headerlink" title="gitignore"></a>gitignore</h3><pre class=" language-shell"><code class="language-shell">touch .gitignore
 
 git rm  --cached xxx
 # 添加 xxx/
 
 git commit -m"gitignore"
 git push origin main
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</code></pre>
 <ul>
 <li>哪些文件应该被忽略<ul>
 <li>系统或者软件自动生成的文件</li>

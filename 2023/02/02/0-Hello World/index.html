@@ -58,9 +58,8 @@
       document.documentElement.setAttribute('color-mode', colorMode)
     }
   </script>
-<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="shixiaocaia" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+<meta name="generator" content="Hexo 6.3.0"><link rel="stylesheet" href="/css/prism.css" type="text/css"><link rel="alternate" href="/atom.xml" title="shixiaocaia" type="application/atom+xml">
+</head>
 
 
   <body>
@@ -155,7 +154,7 @@
       </div>
       <div class="markdown-body">
         <h2 id="npm安装"><a href="#npm安装" class="headerlink" title="npm安装"></a>npm安装</h2><p>前往<a target="_blank" rel="noopener" href="https://nodejs.org/en">Node.js官网</a>选择合适版本</p>
-<h2 id="Hexo环境配置"><a href="#Hexo环境配置" class="headerlink" title="Hexo环境配置"></a>Hexo环境配置</h2><pre class="line-numbers language-shell"><code class="language-shell">npm install hexo-cli -g
+<h2 id="Hexo环境配置"><a href="#Hexo环境配置" class="headerlink" title="Hexo环境配置"></a>Hexo环境配置</h2><pre class=" language-shell"><code class="language-shell">npm install hexo-cli -g
 
 hexo init blog
 
@@ -164,41 +163,41 @@ cd blog
 npm install
 
 hexo server
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="Hexo基本用法"><a href="#Hexo基本用法" class="headerlink" title="Hexo基本用法"></a>Hexo基本用法</h2><pre class="line-numbers language-shell"><code class="language-shell">hexo server # 本地模拟
+</code></pre>
+<h2 id="Hexo基本用法"><a href="#Hexo基本用法" class="headerlink" title="Hexo基本用法"></a>Hexo基本用法</h2><pre class=" language-shell"><code class="language-shell">hexo server # 本地模拟
 
 hexo new "new post" # 新建一篇文章
 
 hexo clean # 清空缓存
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</code></pre>
 <h2 id="修改主题"><a href="#修改主题" class="headerlink" title="修改主题"></a>修改主题</h2><p>取决于你自己。</p>
 <p>本博客主题<a target="_blank" rel="noopener" href="https://minimalism.codeover.cn/docs/config/image">Minimalism</a>。</p>
 <p>修改配置文件后，务必清除缓存使配置生效</p>
-<pre class="line-numbers language-shell"><code class="language-shell">npm run clean
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class=" language-shell"><code class="language-shell">npm run clean
+</code></pre>
 <h2 id="部署到Github"><a href="#部署到Github" class="headerlink" title="部署到Github"></a>部署到Github</h2><blockquote>
 <p>注意您上传的项目名称应为<code>username.github.io</code></p>
 </blockquote>
 <ol>
 <li>hexo-deployer-git插件</li>
 </ol>
-<pre class="line-numbers language-shell"><code class="language-shell">npm install --save hexo-deployer-git
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class=" language-shell"><code class="language-shell">npm install --save hexo-deployer-git
+</code></pre>
 <ol start="2">
 <li>修改_config.yml文件</li>
 </ol>
-<pre class="line-numbers language-shell"><code class="language-shell">deploy:
+<pre class=" language-shell"><code class="language-shell">deploy:
   type: git
   repo: xxx.git
   branch: page # 部署到page分支
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+</code></pre>
 <ol start="3">
 <li>发布到github</li>
 </ol>
-<pre class="line-numbers language-shell"><code class="language-shell">hexo cl # clear cache
+<pre class=" language-shell"><code class="language-shell">hexo cl # clear cache
 hexo g 	# 生成public
 hexo d	# deploy
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</code></pre>
 <ol start="4">
 <li>修改setting设置中的page中分支为上述分支。</li>
 </ol>

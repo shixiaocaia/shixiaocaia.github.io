@@ -58,9 +58,8 @@
       document.documentElement.setAttribute('color-mode', colorMode)
     }
   </script>
-<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="shixiaocaia" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+<meta name="generator" content="Hexo 6.3.0"><link rel="stylesheet" href="/css/prism.css" type="text/css"><link rel="alternate" href="/atom.xml" title="shixiaocaia" type="application/atom+xml">
+</head>
 
 
   <body>
@@ -168,8 +167,8 @@
 <li>信号量</li>
 <li>条件变量</li>
 </ul>
-<h2 id="管道"><a href="#管道" class="headerlink" title="管道"></a>管道</h2><h3 id="匿名管道"><a href="#匿名管道" class="headerlink" title="匿名管道"></a>匿名管道</h3><pre class="line-numbers language-shell"><code class="language-shell">ps auxf | grep mysql
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="管道"><a href="#管道" class="headerlink" title="管道"></a>管道</h2><h3 id="匿名管道"><a href="#匿名管道" class="headerlink" title="匿名管道"></a>匿名管道</h3><pre class=" language-shell"><code class="language-shell">ps auxf | grep mysql
+</code></pre>
 <p>在上述中<code>|</code>就是一个管道，通过管道将前一个输出作为下一条指令的输入，由此可见匿名管道是<strong>单向的</strong>。如果想要相互通信，需要创建两个管道。</p>
 <p>匿名管道是<strong>单向的</strong>（单个管道），<strong>只存在内存中</strong>，相当于<strong>内核中的一串缓存</strong>，读写都是在内核中完成，并且是<strong>无格式的流并且大小受限</strong>。</p>
 <h3 id="命名管道"><a href="#命名管道" class="headerlink" title="命名管道"></a>命名管道</h3><p>与匿名管道对应是命名管道，也被叫做FIFO（是一个先进先出的数据结构），使用前需要通过<code>mkfifo pipiName</code>来创建管道，实际是以<strong>文件</strong>形式存在。</p>
@@ -272,7 +271,7 @@
           </div>
           <div class="post-foot-prev">
             
-              <a href="/2023/05/03/2-ngnix/" target="_self">
+              <a href="/2023/04/17/12-IO/" target="_self">
                 <span>Next</span>
                 <i class="iconfont icon-chevronright"></i>
               </a>
