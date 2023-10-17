@@ -58,8 +58,8 @@
       document.documentElement.setAttribute('color-mode', colorMode)
     }
   </script>
-<meta name="generator" content="Hexo 6.3.0"><link rel="stylesheet" href="/css/prism.css" type="text/css"><link rel="alternate" href="/atom.xml" title="shixiaocaia" type="application/atom+xml">
-</head>
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="shixiaocaia" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
 
 
   <body>
@@ -148,7 +148,7 @@
       <div class="post-attach">
         <span class="post-pubtime">
           <i class="iconfont icon-updatetime mr-10" title="Update time"></i>
-          2023-10-07 09:29:15
+          2023-10-16 11:18:52
         </span>
         
       </div>
@@ -262,7 +262,7 @@
 </ul>
 <p>缺点：</p>
 <ul>
-<li>强依赖DB，当DB异常时整个系统不可用，属于致命问题。配置主从复制可以尽可能的增加可用性，但是数据一致性在特殊情况下难以保证。主从切换时的不一致可能会导致重复发号。</li>
+<li>强依赖DB，当DB异常时整个系统不可用，属于致命问题。通过配置主从复制可以尽可能的增加可用性，但是数据一致性在特殊情况下难以保证，主从切换时的不一致可能会导致重复发号。</li>
 <li>ID发号性能瓶颈限制在单台MySQL的读写性能。</li>
 </ul>
 <p>为了解决MySQL的性能问题，提出如下的解决办法：通过部署多台机器，每台机器设置不同的初始值，且步长和机器数相等。保证每台机器之间生成不同的Id。</p>
@@ -372,7 +372,7 @@ OK
           <div class="post-attach">
             <span class="post-pubtime">
               <i class="iconfont icon-updatetime mr-10" title="Update time"></i>
-              2023-10-07 09:29:15
+              2023-10-16 11:18:52
             </span>
             
           </div>

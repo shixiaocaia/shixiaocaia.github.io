@@ -58,8 +58,8 @@
       document.documentElement.setAttribute('color-mode', colorMode)
     }
   </script>
-<meta name="generator" content="Hexo 6.3.0"><link rel="stylesheet" href="/css/prism.css" type="text/css"><link rel="alternate" href="/atom.xml" title="shixiaocaia" type="application/atom+xml">
-</head>
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="shixiaocaia" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
 
 
   <body>
@@ -148,18 +148,26 @@
       <div class="post-attach">
         <span class="post-pubtime">
           <i class="iconfont icon-updatetime mr-10" title="Update time"></i>
-          2023-10-13 10:44:49
+          2023-10-16 11:52:11
         </span>
         
       </div>
       <div class="markdown-body">
-        <h2 id="Redis中实现消息队列"><a href="#Redis中实现消息队列" class="headerlink" title="Redis中实现消息队列"></a>Redis中实现消息队列</h2>
+        <h2 id="消息队列"><a href="#消息队列" class="headerlink" title="消息队列"></a>消息队列</h2><p>消息队列的本质是传递消息的中间件，中间件并不关心底层的实现。常用的消息队列中间件间有kafka、RocketMQ、RabbitMQ。</p>
+<p>通过MQ可以实现：</p>
+<ul>
+<li>解耦，把任务完成的通知交给消息队列</li>
+<li>削峰，请求交给队列，逐步处理</li>
+<li>提速，发送请求后，返回成功，异步处理任务，变相提高了对外提供的接口的处理能力（QPS）</li>
+<li>通知多人，丢一条消息到MQ，多人自己拉取，或者MQ通知</li>
+</ul>
+<h2 id="Redis中实现消息队列"><a href="#Redis中实现消息队列" class="headerlink" title="Redis中实现消息队列"></a>Redis中实现消息队列</h2><h3 id="List"><a href="#List" class="headerlink" title="List"></a>List</h3><h3 id="Pub-Sub"><a href="#Pub-Sub" class="headerlink" title="Pub&#x2F;Sub"></a>Pub&#x2F;Sub</h3><h3 id="Stream"><a href="#Stream" class="headerlink" title="Stream"></a>Stream</h3><h2 id="Kafka"><a href="#Kafka" class="headerlink" title="Kafka"></a>Kafka</h2><h2 id="选型"><a href="#选型" class="headerlink" title="选型"></a>选型</h2>
       </div>
       
         <div class="prev-or-next">
           <div class="post-foot-next">
             
-              <a href="/2023/07/12/4-GMP%E6%A8%A1%E5%9E%8B/" target="_self">
+              <a href="/2023/06/13/10-GC/" target="_self">
                 <i class="iconfont icon-chevronleft"></i>
                 <span>Prev</span>
               </a>
@@ -168,13 +176,13 @@
           <div class="post-attach">
             <span class="post-pubtime">
               <i class="iconfont icon-updatetime mr-10" title="Update time"></i>
-              2023-10-13 10:44:49
+              2023-10-16 11:52:11
             </span>
             
           </div>
           <div class="post-foot-prev">
             
-              <a href="/2023/09/03/1-wsl+golang/" target="_self">
+              <a href="/2023/07/12/4-GMP%E6%A8%A1%E5%9E%8B/" target="_self">
                 <span>Next</span>
                 <i class="iconfont icon-chevronright"></i>
               </a>
@@ -191,7 +199,7 @@
     <div class="title">Contents</div>
     <div class="catalog-content">
       
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Redis%E4%B8%AD%E5%AE%9E%E7%8E%B0%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97"><span class="toc-text">Redis中实现消息队列</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97"><span class="toc-text">消息队列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Redis%E4%B8%AD%E5%AE%9E%E7%8E%B0%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97"><span class="toc-text">Redis中实现消息队列</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#List"><span class="toc-text">List</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Pub-Sub"><span class="toc-text">Pub&#x2F;Sub</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Stream"><span class="toc-text">Stream</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Kafka"><span class="toc-text">Kafka</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%89%E5%9E%8B"><span class="toc-text">选型</span></a></li></ol>
       
     </div>
   </div>
