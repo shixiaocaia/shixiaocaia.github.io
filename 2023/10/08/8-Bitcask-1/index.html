@@ -148,12 +148,12 @@
       <div class="post-attach">
         <span class="post-pubtime">
           <i class="iconfont icon-updatetime mr-10" title="Update time"></i>
-          2023-10-17 16:57:08
+          2023-10-18 16:58:32
         </span>
         
       </div>
       <div class="markdown-body">
-        <h2 id="数据库启动流程"><a href="#数据库启动流程" class="headerlink" title="数据库启动流程"></a>数据库启动流程</h2><p>基于Bitcask论文实现的存储引擎实例，本质上是在本地当中维护一个文件夹，这其中维护了.data结尾的数据文件。</p>
+        <h2 id="数据库启动流程"><a href="#数据库启动流程" class="headerlink" title="数据库启动流程"></a>数据库启动流程</h2><p>基于Bitcask论文实现的存储引擎实例，本质上是在本地当中维护一个文件夹，这其中包含了.data结尾的数据文件，merge完成的Hint文件，文件锁文件等。</p>
 <h3 id="参数校验"><a href="#参数校验" class="headerlink" title="参数校验"></a>参数校验</h3><p>启动Bitcask时做参数校验应该考虑：</p>
 <ul>
 <li>当前目录是否存在，是否为一个新的实例</li>
@@ -171,12 +171,13 @@
 <li>文件锁</li>
 </ul>
 <h3 id="加载merge文件"><a href="#加载merge文件" class="headerlink" title="加载merge文件"></a>加载merge文件</h3><p>merge后的文件目录存放在父级目录同名之下的文件夹当中，如果不存在说明没有发生过合并。</p>
-<p>如果存在merge目录，遍历目录下的文件，判断是否存在mergeFinished文件，来判断merge操作是否有效，mergeFinished文件中存放了完成merge的文件序列号，未完成merge的部分后续需要手动加载。</p>
+<p>如果存在merge目录，遍历目录下的文件，判断是否存在mergeFinished文件，来判断merge操作是否有效，mergeFinished文件中存放了完成merge的文件序列号，未完成merge的部分后续需要手动加载索引信息。</p>
 <p>在判断merge有效性后，删除旧文件，移动新文件到目录当中覆盖，最后删除merge目录。</p>
-<h3 id="加载数据文件"><a href="#加载数据文件" class="headerlink" title="加载数据文件"></a>加载数据文件</h3><p>因为内存中维护的是key-value的数据信息在磁盘中的位置，这里需要提前加载好数据文件，每次打开数据库都需要重新构造索引信息。</p>
-<p>在本项目中将.data后缀的文件作为数据文件，并且这里根据文件名排序，实现有序数据文件，便于后续有序加载索引（记录是追加写入到磁盘中的文件的，超过datafileSize开启新的一个，同时删除是写入一条墓碑值，因此这里加载顺序很重要）。</p>
+<h3 id="加载数据文件"><a href="#加载数据文件" class="headerlink" title="加载数据文件"></a>加载数据文件</h3><p>因为内存中维护的是key-value的数据信息在磁盘中的位置，这里需要提前加载好数据文件，每次打开数据库都需要重新构造索引信息，查询时先从内存中找到位置信息，再从文件中读取。</p>
+<p>在本项目中将.data后缀的文件作为数据文件，并且这里根据文件名排序，实现有序数据文件，便于后续有序加载索引（记录是追加写入到磁盘中的文件的，相同Key的记录，后加载应该是最新的有效数据，用来更新已经加载的数据）。</p>
+<p>在加载数据文件时，加载文件的名，作为后续olderFiles的编号。</p>
 <p>加载到最后一个文件，是当前实例的活跃文件，所有新增或者删除记录都是追加写入到活跃文件当中的，其他文件作为olderFile只用于读。</p>
-<h3 id="加载索引"><a href="#加载索引" class="headerlink" title="加载索引"></a>加载索引</h3><p>在磁盘中当中只保存了数据文件，每次打开数据库是需要重新加载索引信息到内存当中的。当然如果此时发生了merge操作，merge操作完会生成所有有效信息的一个Hint索引文件，未merge的数据文件还需要手动加载索引信息。</p>
+<h3 id="加载索引"><a href="#加载索引" class="headerlink" title="加载索引"></a>加载索引</h3><p>在磁盘中当中只保存了数据文件，每次打开数据库是需要重新加载索引信息到内存当中的。当然如果此时发生了merge操作，merge操作完会生成所有有效信息的一个Hint索引文件，未merge的数据文件还需要手动构造加载索引信息。</p>
 <p>读取数据文件中的每一条记录，进行解码得到信息，构造Value信息：</p>
 <ul>
 <li>解析记录的末尾序列号，如果是nonTransactionSeqNo说明是普通记录，可以更新</li>
@@ -187,7 +188,8 @@
 <p>在解析完Key后，如果是普通索引，或者完整事务记录信息，更新内存索引，Key：key，Value：Fid + Offset + size。</p>
 <p>如果序列号是事务序列号，需要判断是否完成，完成统一加载索引信息，否则丢弃。</p>
 <p>其中B+树索引，使用了开源的BBlot，索引信息实际上是维护一个DB实例。每次加载数据库时，索引信息不需要通过数据文件加载，直接打开DB实例即可。由于没有读取数据文件，最新的事务序列号要通过一个seqNoFile文件进行获取，同时为了后续追加写入读取完后删除，在关闭数据库时写入一条记录到seqNoFile文件当中。</p>
-<h2 id="索引结构设计"><a href="#索引结构设计" class="headerlink" title="索引结构设计"></a>索引结构设计</h2><p>在设计内存索引结构时，考虑到实际场景需要实现不同的内存索引结构，设计了抽象的内存索引接口：</p>
+<h2 id="索引结构设计"><a href="#索引结构设计" class="headerlink" title="索引结构设计"></a>索引结构设计</h2><p>在内存当中，我们需要一种支持高效插入、读取、删除数据的结构，并且如果需要数据高效遍历的话，我们最好是选择天然支持有序的一种结构。常见的选择有BTree、跳表、红黑树等。</p>
+<p>在设计内存索引结构时，考虑到实际场景需要实现不同的内存索引结构，设计了抽象的内存索引接口：</p>
 <pre class=" language-go"><code class="language-go"><span class="token keyword">type</span> Indexer <span class="token keyword">interface</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
     <span class="token comment" spellcheck="true">// Put 向索引结构中存储 key 对应的数据位置信息</span>
     <span class="token function">Put</span><span class="token punctuation">(</span>key <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">byte</span><span class="token punctuation">,</span> pos <span class="token operator">*</span>data<span class="token punctuation">.</span>LogRecordPos<span class="token punctuation">)</span> <span class="token operator">*</span>data<span class="token punctuation">.</span>LogRecordPos
@@ -209,7 +211,12 @@
 <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 </code></pre>
 <p>在本项目中，主要结合Bitcask论文实现存储引擎实例，索引部分设计不是重点，主要利用现有的索引实现相应的功能。主要采用了三种索引结构，BTree，ARTree以及B+Tree。</p>
-<h3 id="BTree"><a href="#BTree" class="headerlink" title="BTree"></a>BTree</h3><p>在一开始中只是先使用BTree实现了，</p>
+<h3 id="BTree"><a href="#BTree" class="headerlink" title="BTree"></a>BTree</h3><p>在一开始中只是先使用<a target="_blank" rel="noopener" href="https://github.com/google/btree">BTree</a>实现了，BTree是一种常用的多叉树数据结构，主要用于管理大量数据并允许高效的插入、删除和搜索操作。具有以下特点：</p>
+<ul>
+<li><strong>多叉树结构</strong>：B树是一种多叉树，每个节点可以拥有多个子节点，通常用于处理大量数据，减少树的高度。</li>
+<li><strong>平衡性</strong>：B树是一种自平衡树，保持平衡是其重要特征，通过旋转和分裂等操作保持树的平衡，确保操作的时间复杂度稳定。</li>
+<li><strong>有序存储</strong>：B树节点中的元素是有序存储的，使得在节点内部可以进行快速查找。</li>
+</ul>
 <h3 id="ARTree"><a href="#ARTree" class="headerlink" title="ARTree"></a>ARTree</h3><p>ARTree是自适应基树，可以看成是一个前缀树的优化版本，如果子节点只有一个值，则会和父节点进行合并，减少空间占用。实际中使用了封装<a target="_blank" rel="noopener" href="https://github.com/plar/go-adaptive-radix-tree">go-adaptive</a>实现ART索引结构。</p>
 <p>ARTree节点有多个类型，比如Node4，Node16。对于Node4：使用一个长度为4的数组来存储子节点的键，另外一个长度为4的数组来存储指向子节点的指针。</p>
 <p>随着键的插入和删除，节点可能需要进行升级或降级以匹配子节点的数量。通过动态调整子节点的大小，实现空间的高效利用和查询性能优化。</p>
@@ -265,18 +272,20 @@
 <blockquote>
 <p>通过将字段设计为变长，节省了存储空间。如果keysize是u32类型，不使用变长，将固定占据4字节，有的时候key长度很小，例如长度为5，只需要1个字节存储。</p>
 </blockquote>
-<h3 id="写入记录"><a href="#写入记录" class="headerlink" title="写入记录"></a>写入记录</h3><ul>
+<h3 id="写入记录"><a href="#写入记录" class="headerlink" title="写入记录"></a>写入记录</h3><p>在写入一条记录之前，对Key进一步编码，在前缀增加一个Seq，表示是普通记录，还是事务记录。在merge完成时会去除事务序列号。加载到内存中时加载时realKey。</p>
+<ul>
 <li>使用1个字节存储Type</li>
 <li>然后使用变长字段记录KeySize和ValueSize</li>
 <li>将编码后的header拷贝到数组当中，然后拷贝key和value</li>
 <li>最后做一个crc校验，插入到头部</li>
 </ul>
+<p>写入一条记录时先写入Type，计算Key，Value的大小写入，再写入Key，Value，最后做一个CRC校验，写入记录的头部。</p>
 <h3 id="读取记录"><a href="#读取记录" class="headerlink" title="读取记录"></a>读取记录</h3><ul>
 <li>拿到Header后，如果判断keySize和ValueSize均为0，则说明读取到了文件末尾，返回一个EOF错误</li>
-<li>否则，再根据Header中的key和value的长度信息，判断其值是否大于0，如果是的话，说明存在KeyValue</li>
 <li>根据Offset + KeySize和ValueSize的总和，读取一个字节数组，包含了Key&#x2F;Value的信息</li>
 <li>再根据crc以后的几个字段，计算出crc值，对比header中的crc值进行校验</li>
 </ul>
+<p>读取一条记录时，先读取头部信息，判断keySize和ValueSize是否有效，为0说明读取到了文件末尾，返回一个EOF错误；否则根据Header中的Size信息，读取Key和value信息；最后计算读取的header中除了crc字段，加上key，value计算得出的crc值，与记录中的crc值是否一直，避免记录被破坏。</p>
 
       </div>
       
@@ -292,7 +301,7 @@
           <div class="post-attach">
             <span class="post-pubtime">
               <i class="iconfont icon-updatetime mr-10" title="Update time"></i>
-              2023-10-17 16:57:08
+              2023-10-18 16:58:32
             </span>
             
           </div>

@@ -6,7 +6,7 @@
   <link href="https://shixiaocaia.github.io/atom.xml" rel="self"/>
   
   <link href="https://shixiaocaia.github.io/"/>
-  <updated>2023-10-17T08:57:08.621Z</updated>
+  <updated>2023-10-18T08:58:32.201Z</updated>
   <id>https://shixiaocaia.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://shixiaocaia.github.io/2023/10/08/8-Bitcask-1/"/>
     <id>https://shixiaocaia.github.io/2023/10/08/8-Bitcask-1/</id>
     <published>2023-10-08T13:55:27.000Z</published>
-    <updated>2023-10-17T08:57:08.621Z</updated>
+    <updated>2023-10-18T08:58:32.201Z</updated>
     
     
       
@@ -86,9 +86,32 @@
     
     
     
+    <category term="Linux" scheme="https://shixiaocaia.github.io/tags/Linux/"/>
+    
     <category term="golang" scheme="https://shixiaocaia.github.io/tags/golang/"/>
     
-    <category term="Linux" scheme="https://shixiaocaia.github.io/tags/Linux/"/>
+  </entry>
+  
+  <entry>
+    <title>消息队列</title>
+    <link href="https://shixiaocaia.github.io/2023/07/12/5-MQ/"/>
+    <id>https://shixiaocaia.github.io/2023/07/12/5-MQ/</id>
+    <published>2023-07-12T08:07:22.000Z</published>
+    <updated>2023-10-16T03:52:11.653Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;消息队列&quot;&gt;&lt;a href=&quot;#消息队列&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="MQ" scheme="https://shixiaocaia.github.io/tags/MQ/"/>
     
   </entry>
   
@@ -116,29 +139,6 @@
     
     
     <category term="golang" scheme="https://shixiaocaia.github.io/tags/golang/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>消息队列</title>
-    <link href="https://shixiaocaia.github.io/2023/07/12/5-MQ/"/>
-    <id>https://shixiaocaia.github.io/2023/07/12/5-MQ/</id>
-    <published>2023-07-12T08:07:22.000Z</published>
-    <updated>2023-10-16T03:52:11.653Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;消息队列&quot;&gt;&lt;a href=&quot;#消息队列&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    
-    <category term="MQ" scheme="https://shixiaocaia.github.io/tags/MQ/"/>
     
   </entry>
   
