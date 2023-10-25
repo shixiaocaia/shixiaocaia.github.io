@@ -6,7 +6,7 @@
   <link href="https://shixiaocaia.github.io/atom.xml" rel="self"/>
   
   <link href="https://shixiaocaia.github.io/"/>
-  <updated>2023-10-18T08:58:32.201Z</updated>
+  <updated>2023-10-25T14:31:35.308Z</updated>
   <id>https://shixiaocaia.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Docker基本使用</title>
+    <link href="https://shixiaocaia.github.io/2023/10/20/13-Docker/"/>
+    <id>https://shixiaocaia.github.io/2023/10/20/13-Docker/</id>
+    <published>2023-10-20T00:48:29.000Z</published>
+    <updated>2023-10-25T14:31:35.308Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.bilibili.com/video/BV14s4y1i7Vf?p=1&amp;vd_source=98edb319e59affabde4d9cb2731826cd&quot;&gt;GeekHour</summary>
+        
+      
+    
+    
+    
+    
+    <category term="是什么" scheme="https://shixiaocaia.github.io/tags/%E6%98%AF%E4%BB%80%E4%B9%88/"/>
+    
+  </entry>
   
   <entry>
     <title>Bitcask | 实现细节</title>
@@ -71,7 +95,7 @@
     <link href="https://shixiaocaia.github.io/2023/09/03/1-wsl+golang/"/>
     <id>https://shixiaocaia.github.io/2023/09/03/1-wsl+golang/</id>
     <published>2023-09-03T08:07:22.000Z</published>
-    <updated>2023-10-15T02:57:22.226Z</updated>
+    <updated>2023-10-25T05:20:38.839Z</updated>
     
     
       
@@ -89,29 +113,6 @@
     <category term="Linux" scheme="https://shixiaocaia.github.io/tags/Linux/"/>
     
     <category term="golang" scheme="https://shixiaocaia.github.io/tags/golang/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>消息队列</title>
-    <link href="https://shixiaocaia.github.io/2023/07/12/5-MQ/"/>
-    <id>https://shixiaocaia.github.io/2023/07/12/5-MQ/</id>
-    <published>2023-07-12T08:07:22.000Z</published>
-    <updated>2023-10-16T03:52:11.653Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;消息队列&quot;&gt;&lt;a href=&quot;#消息队列&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    
-    <category term="MQ" scheme="https://shixiaocaia.github.io/tags/MQ/"/>
     
   </entry>
   
@@ -139,6 +140,29 @@
     
     
     <category term="golang" scheme="https://shixiaocaia.github.io/tags/golang/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>消息队列</title>
+    <link href="https://shixiaocaia.github.io/2023/07/12/5-MQ/"/>
+    <id>https://shixiaocaia.github.io/2023/07/12/5-MQ/</id>
+    <published>2023-07-12T08:07:22.000Z</published>
+    <updated>2023-10-16T03:52:11.653Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;消息队列&quot;&gt;&lt;a href=&quot;#消息队列&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="MQ" scheme="https://shixiaocaia.github.io/tags/MQ/"/>
     
   </entry>
   

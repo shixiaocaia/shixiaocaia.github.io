@@ -11,7 +11,7 @@
   
   <title>
     
-      About 
+      Docker基本使用 
       
       
       |
@@ -139,19 +139,98 @@
   
 
   
-  <!-- 关于页 url形式：https://yoursite/about/ -->
-    <div class="container about-index">
+
+  
+  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
+  <div class="container post-details" id="post-details">
+    <div class="post-content">
+      <div class="post-title">Docker基本使用</div>
+      <div class="post-attach">
+        <span class="post-pubtime">
+          <i class="iconfont icon-updatetime mr-10" title="Update time"></i>
+          2023-10-25 22:31:35
+        </span>
+        
+      </div>
       <div class="markdown-body">
-        <p><img src="/../images/about.gif" alt="about"></p>
-<h2 id="关于我"><a href="#关于我" class="headerlink" title="关于我"></a>关于我</h2><p>通信工程硕士<del class="text-gray-300">在读</del>，祝我顺利毕业。</p>
-<p>在学习CS相关知识，希望能够从事后端开发。</p>
-<p>热爱播客，喜欢捣鼓，希望获得更多的人生体验。</p>
+        <blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV14s4y1i7Vf?p=1&vd_source=98edb319e59affabde4d9cb2731826cd">GeekHour Docker入门教程</a></p>
+</blockquote>
+<h2 id="Docker和虚拟机区别"><a href="#Docker和虚拟机区别" class="headerlink" title="Docker和虚拟机区别"></a>Docker和虚拟机区别</h2><p>虚拟机是物理机通过Hypervisor虚拟化技术实现的，将物理机器虚拟成多个虚拟化的服务器，虚拟化的服务器包含了完整的操作系统、CPU、硬盘等资源。</p>
+<p>Docker是容器一种实现，容器是一种虚拟化技术。和虚拟机类似，可以在这个虚拟环境中运行程序，但是使用宿主机的操作系统，占用较少的资源。</p>
+<h2 id="基本原理"><a href="#基本原理" class="headerlink" title="基本原理"></a>基本原理</h2><p><img src="/../images/docker1.png" alt="image-20231025220228605"></p>
+<ul>
+<li>images：一个只读的模板，可以用来创建容器。</li>
+<li>container：docker运行的实例，提供一个独立可以移植的环境。</li>
+<li>registry：仓库集中存储分享docker镜像，比如dockerhub。</li>
+<li>docker-daemon：服务端守护进程，管理docker资源，处理请求返回给客户端。</li>
+<li>docker-client：发送请求。</li>
+</ul>
+<h2 id="Docker基本使用"><a href="#Docker基本使用" class="headerlink" title="Docker基本使用"></a>Docker基本使用</h2><h3 id="创建Dockerfile"><a href="#创建Dockerfile" class="headerlink" title="创建Dockerfile"></a>创建Dockerfile</h3><pre class=" language-dockerfile"><code class="language-dockerfile">FROM node: 18-alpine # 精简的操作系统
+WORKDIR /app
+COPY ..
+RUN npm install
+CMD node src/index.js
+EXPOSE 3000
+</code></pre>
+<pre class=" language-shell"><code class="language-shell">docker build -t hello-docker:1.1 .
+# hello-docker是image-name, 可以指定版本号，'.'当前路径
+# 生成的docker-image 
+</code></pre>
+<h3 id="基本命令"><a href="#基本命令" class="headerlink" title="基本命令"></a>基本命令</h3><pre class=" language-shell"><code class="language-shell">docker image ls # 查看所有镜像
+
+docker run hello-docker # 运行镜像
+
+docker pull geekHour/hello-docker # 拉取镜像
+</code></pre>
+<h2 id="Docker-Compose-yaml"><a href="#Docker-Compose-yaml" class="headerlink" title="Docker.Compose.yaml"></a>Docker.Compose.yaml</h2><p>自动配置相互关联的容器，使用<code>docker compose up</code>启动、停止、重建服务。</p>
 
       </div>
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+              <a href="/2023/10/08/8-Bitcask-1/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>Prev</span>
+              </a>
+            
+          </div>
+          <div class="post-attach">
+            <span class="post-pubtime">
+              <i class="iconfont icon-updatetime mr-10" title="Update time"></i>
+              2023-10-25 22:31:35
+            </span>
+            
+          </div>
+          <div class="post-foot-prev">
+            
+          </div>
+        </div>
+      
     </div>
-  
+    
+  <div id="btn-catalog" class="btn-catalog">
+    <i class="iconfont icon-catalog"></i>
+  </div>
+  <div class="post-catalog hidden" id="catalog">
+    <div class="title">Contents</div>
+    <div class="catalog-content">
+      
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker%E5%92%8C%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%8C%BA%E5%88%AB"><span class="toc-text">Docker和虚拟机区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86"><span class="toc-text">基本原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="toc-text">Docker基本使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BADockerfile"><span class="toc-text">创建Dockerfile</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4"><span class="toc-text">基本命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker-Compose-yaml"><span class="toc-text">Docker.Compose.yaml</span></a></li></ol>
+      
+    </div>
+  </div>
 
   
+<script src="/js/catalog.js"></script>
+
+
+
+
+    
+  </div>
+
 
         
 <div class="footer">
