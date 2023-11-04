@@ -58,8 +58,8 @@
       document.documentElement.setAttribute('color-mode', colorMode)
     }
   </script>
-<meta name="generator" content="Hexo 6.3.0"><link rel="stylesheet" href="/css/prism.css" type="text/css"><link rel="alternate" href="/atom.xml" title="shixiaocaia" type="application/atom+xml">
-</head>
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="shixiaocaia" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
 
 
   <body>
@@ -148,7 +148,7 @@
       <div class="post-attach">
         <span class="post-pubtime">
           <i class="iconfont icon-updatetime mr-10" title="Update time"></i>
-          2023-10-25 13:20:38
+          2023-11-04 18:03:40
         </span>
         
       </div>
@@ -222,6 +222,20 @@ cat ~/.ssh/id_rsa.pub
 # 测试配置成功
 ssh -T git@github.com
 </code></pre>
+<h3 id="启动目录"><a href="#启动目录" class="headerlink" title="启动目录"></a>启动目录</h3><ul>
+<li>打开中终端设置，搜索wsl</li>
+</ul>
+<pre class=" language-shell"><code class="language-shell">&#123;
+    "guid": "&#123;72130475-4d4b-5774-bc1a-2a09ff7f0056&#125;",
+    "hidden": false,
+    "name": "Ubuntu2204",
+    "source": "Windows.Terminal.Wsl",
+    "startingDirectory": "//wsl$/Ubuntu2204/home/xiaocai"
+&#125;
+</code></pre>
+<ul>
+<li>如果是其他终端工具，设置工作目录<code>//wsl$/Ubuntu2204/home/xiaocai</code></li>
+</ul>
 <h2 id="自动安装"><a href="#自动安装" class="headerlink" title="自动安装"></a>自动安装</h2><pre class=" language-shell"><code class="language-shell">sudo apt install golang-go
 apt remove golang-go
 </code></pre>
@@ -281,8 +295,32 @@ go version
 <ul>
 <li>运行&#x2F;调试配置更改</li>
 </ul>
-<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><h3 id="127-0-0-1"><a href="#127-0-0-1" class="headerlink" title="127.0.0.1"></a>127.0.0.1</h3><p>wsl下的127.0.0.1并不能正确访问，应该使用localhost进行访问，得到一种解释：127.0.0.1要走从网络层全链路走一圈的，localhost则不必，所以是wsl2环境问题。</p>
-<p>官方文档使用wsl的注意点：<a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/windows/wsl/networking%E3%80%82">https://learn.microsoft.com/zh-cn/windows/wsl/networking。</a></p>
+<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><h3 id="127-0-0-1"><a href="#127-0-0-1" class="headerlink" title="127.0.0.1"></a>127.0.0.1</h3><p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/windows/wsl/networking">官方文档说明</a></p>
+<ul>
+<li>wsl下的<code>127.0.0.1</code>并不能正确访问，应该使用<code>localhost</code>进行访问，得到一种解释：<code>127.0.0.1</code>要走从网络层全链路走一圈的，<code>localhost</code>则不必。</li>
+<li>wsl访问windows下的服务，需要通过IP地址方式，<code>ip route | grep default | awk &#39;&#123;print $3&#125;&#39;</code>获取本机IP地址。</li>
+</ul>
+<h3 id="wsl备份以及恢复"><a href="#wsl备份以及恢复" class="headerlink" title="wsl备份以及恢复"></a>wsl备份以及恢复</h3><pre class=" language-shell"><code class="language-shell">wsl -l -v # 确认wsl版本
+
+# 提前创建文件夹
+wsl --export Ubuntu2204 D:\wsl\ubuntu.tar # 导出Ubuntu2204 到d盘
+
+wsl --unregister Ubuntu2204 # 注销旧版本
+
+wsl -l -v # 确认注销
+
+wsl --import Ubuntu2204 D:\wsl D:\wsl\ubuntu.tar # 导入备份文件
+
+wsl -s Ubuntu2204 # 设置为默认
+</code></pre>
+<p>还原后的子系统进入后，默认成了 root 用户，解决方法如下，在终端启动时，配置<code>wsl.exe -d Ubuntu2204 -u xiaocai</code>。</p>
+<h3 id="docker-desktop"><a href="#docker-desktop" class="headerlink" title="docker-desktop"></a>docker-desktop</h3><ul>
+<li>默认情况下，Docker Desktop for Window会创建如下两个发行版（distro）：<ul>
+<li>docker-desktop：用于存放程序</li>
+<li>docker-desktop-data：用于存放镜像</li>
+</ul>
+</li>
+</ul>
 
       </div>
       
@@ -298,7 +336,7 @@ go version
           <div class="post-attach">
             <span class="post-pubtime">
               <i class="iconfont icon-updatetime mr-10" title="Update time"></i>
-              2023-10-25 13:20:38
+              2023-11-04 18:03:40
             </span>
             
           </div>
@@ -321,7 +359,7 @@ go version
     <div class="title">Contents</div>
     <div class="catalog-content">
       
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEWSL"><span class="toc-text">配置WSL</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%87%E6%8D%A2root%E7%94%A8%E6%88%B7"><span class="toc-text">切换root用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%99%90%E5%88%B6Vmmem%E5%86%85%E5%AD%98"><span class="toc-text">限制Vmmem内存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8docker"><span class="toc-text">使用docker</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEGit"><span class="toc-text">配置Git</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E5%AE%89%E8%A3%85"><span class="toc-text">自动安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%8B%E5%8A%A8%E5%AE%89%E8%A3%85"><span class="toc-text">手动安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#golang%E9%85%8D%E7%BD%AE"><span class="toc-text">golang配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="toc-text">常见问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#127-0-0-1"><span class="toc-text">127.0.0.1</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEWSL"><span class="toc-text">配置WSL</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%87%E6%8D%A2root%E7%94%A8%E6%88%B7"><span class="toc-text">切换root用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%99%90%E5%88%B6Vmmem%E5%86%85%E5%AD%98"><span class="toc-text">限制Vmmem内存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8docker"><span class="toc-text">使用docker</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEGit"><span class="toc-text">配置Git</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8%E7%9B%AE%E5%BD%95"><span class="toc-text">启动目录</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E5%AE%89%E8%A3%85"><span class="toc-text">自动安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%8B%E5%8A%A8%E5%AE%89%E8%A3%85"><span class="toc-text">手动安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#golang%E9%85%8D%E7%BD%AE"><span class="toc-text">golang配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="toc-text">常见问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#127-0-0-1"><span class="toc-text">127.0.0.1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#wsl%E5%A4%87%E4%BB%BD%E4%BB%A5%E5%8F%8A%E6%81%A2%E5%A4%8D"><span class="toc-text">wsl备份以及恢复</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#docker-desktop"><span class="toc-text">docker-desktop</span></a></li></ol></li></ol>
       
     </div>
   </div>
