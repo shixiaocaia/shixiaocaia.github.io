@@ -148,7 +148,7 @@
       <div class="post-attach">
         <span class="post-pubtime">
           <i class="iconfont icon-updatetime mr-10" title="Update time"></i>
-          2023-11-04 18:03:40
+          2023-11-09 15:29:18
         </span>
         
       </div>
@@ -200,12 +200,23 @@ docker container kill 容器名或容器id
 # 或可简写为
 docker kill 容器名或容器id
 </code></pre>
-<h3 id="配置Git"><a href="#配置Git" class="headerlink" title="配置Git"></a>配置Git</h3><pre class=" language-shell"><code class="language-shell">$ apt-get install libcurl4-gnutls-dev libexpat1-dev gettext \
-  libz-dev libssl-dev
+<pre class=" language-shell"><code class="language-shell">docker ps
 
-$ apt-get install git
+docker exec -it d498d9f00612 /bin/bash
 
-$ git --version
+select  host, user, authentication_string, plugin from mysql.user;
+
+use mysql
+
+update user set host = '%' where user = 'root';
+alter user 'root'@'%' identified with mysql_native_password by 'shixiaocaia';
+
+FLUSH PRIVILEGES;
+</code></pre>
+<h3 id="配置Git"><a href="#配置Git" class="headerlink" title="配置Git"></a>配置Git</h3><pre class=" language-shell"><code class="language-shell">sudo apt update
+sudo apt install git
+
+git --version
 git version 1.8.1.2
 </code></pre>
 <pre class=" language-shell"><code class="language-shell"># 配置用户信息
@@ -320,7 +331,27 @@ wsl -s Ubuntu2204 # 设置为默认
 <li>docker-desktop-data：用于存放镜像</li>
 </ul>
 </li>
+<li>docker-desktop-data部分应该按照5.2一样正常迁移</li>
 </ul>
+<pre class=" language-shell"><code class="language-shell">wsl --export docker-desktop-data D:\wsl\docker-data.tar
+
+wsl --unregister docker-desktop-data
+
+wsl --import docker-desktop-data D:\wsl\docker D:\wsl\docker-data.tar
+
+wsl -l -v
+</code></pre>
+<h3 id="goland-error-obtaining-VCS-status-exit-status-128"><a href="#goland-error-obtaining-VCS-status-exit-status-128" class="headerlink" title="goland error obtaining VCS status: exit status 128"></a>goland error obtaining VCS status: exit status 128</h3><p>设置，<code>go env -w GOFLAGS=&quot;-buildvcs=false&quot;</code></p>
+<h3 id="fatal-detected-dubious-ownership-in-repository-at"><a href="#fatal-detected-dubious-ownership-in-repository-at" class="headerlink" title="fatal: detected dubious ownership in repository at"></a>fatal: detected dubious ownership in repository at</h3><ul>
+<li>启动用户更换成了root，导致goland打开项目时也是root，和创建文件的xiaocai不一致</li>
+<li>修改&#x2F;etc&#x2F;wsl.conf，设置默认启动用户</li>
+</ul>
+<pre class=" language-shell"><code class="language-shell">[boot]
+systemd=true
+
+[user]
+default = xiaocai
+</code></pre>
 
       </div>
       
@@ -336,7 +367,7 @@ wsl -s Ubuntu2204 # 设置为默认
           <div class="post-attach">
             <span class="post-pubtime">
               <i class="iconfont icon-updatetime mr-10" title="Update time"></i>
-              2023-11-04 18:03:40
+              2023-11-09 15:29:18
             </span>
             
           </div>
@@ -359,7 +390,7 @@ wsl -s Ubuntu2204 # 设置为默认
     <div class="title">Contents</div>
     <div class="catalog-content">
       
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEWSL"><span class="toc-text">配置WSL</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%87%E6%8D%A2root%E7%94%A8%E6%88%B7"><span class="toc-text">切换root用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%99%90%E5%88%B6Vmmem%E5%86%85%E5%AD%98"><span class="toc-text">限制Vmmem内存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8docker"><span class="toc-text">使用docker</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEGit"><span class="toc-text">配置Git</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8%E7%9B%AE%E5%BD%95"><span class="toc-text">启动目录</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E5%AE%89%E8%A3%85"><span class="toc-text">自动安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%8B%E5%8A%A8%E5%AE%89%E8%A3%85"><span class="toc-text">手动安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#golang%E9%85%8D%E7%BD%AE"><span class="toc-text">golang配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="toc-text">常见问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#127-0-0-1"><span class="toc-text">127.0.0.1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#wsl%E5%A4%87%E4%BB%BD%E4%BB%A5%E5%8F%8A%E6%81%A2%E5%A4%8D"><span class="toc-text">wsl备份以及恢复</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#docker-desktop"><span class="toc-text">docker-desktop</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEWSL"><span class="toc-text">配置WSL</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%87%E6%8D%A2root%E7%94%A8%E6%88%B7"><span class="toc-text">切换root用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%99%90%E5%88%B6Vmmem%E5%86%85%E5%AD%98"><span class="toc-text">限制Vmmem内存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8docker"><span class="toc-text">使用docker</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEGit"><span class="toc-text">配置Git</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8%E7%9B%AE%E5%BD%95"><span class="toc-text">启动目录</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E5%AE%89%E8%A3%85"><span class="toc-text">自动安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%8B%E5%8A%A8%E5%AE%89%E8%A3%85"><span class="toc-text">手动安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#golang%E9%85%8D%E7%BD%AE"><span class="toc-text">golang配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="toc-text">常见问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#127-0-0-1"><span class="toc-text">127.0.0.1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#wsl%E5%A4%87%E4%BB%BD%E4%BB%A5%E5%8F%8A%E6%81%A2%E5%A4%8D"><span class="toc-text">wsl备份以及恢复</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#docker-desktop"><span class="toc-text">docker-desktop</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#goland-error-obtaining-VCS-status-exit-status-128"><span class="toc-text">goland error obtaining VCS status: exit status 128</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#fatal-detected-dubious-ownership-in-repository-at"><span class="toc-text">fatal: detected dubious ownership in repository at</span></a></li></ol></li></ol>
       
     </div>
   </div>
@@ -391,7 +422,7 @@ wsl -s Ubuntu2204 # 设置为默认
     
     <div class="footer-more">
       
-        <a target="_blank" rel="noopener" href="https://github.com/shixiaocaia">Copyright © 2023 shixiaocaia</a>
+        <a target="_blank" rel="noopener" href="https://github.com/shixiaocaia">Copyright © 2024 shixiaocaia</a>
         
     </div>
   
